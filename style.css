@@ -13,15 +13,12 @@ body {
     }
 
     /* Hero */
-    .hero {
-      min-height: 90vh;
-      display: flex;
-      align-items: center;
-      background: linear-gradient(120deg, #0f172a, #020617);
-      color: white;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+   .hero {
+    min-height: 100vh;
+    background:
+    linear-gradient(rgba(8, 12, 30, 0.75), rgba(8, 12, 30, 0.85)),
+    url("herobg.jpg") center / cover no-repeat;
+    position: relative;
     }
 
     .hero::before {
@@ -148,12 +145,17 @@ body {
 
     /* Glass Card */
     .glass-card {
-      background: rgba(255, 255, 255, 0.9);
+      max-width: 560px;
+      padding: 3rem !important;
+      background: rgba(255, 255, 255, 0.06);
       border-radius: 22px;
-      padding: 40px;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.25);
-      margin-top: -40px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 22px 60px rgba(0, 0, 0, 0.45);
+      color: #fff;
     }
+
 
     /* Form Inputs */
     .form-control, .form-select {
