@@ -39,93 +39,77 @@
 </nav>
 
 <!-- Hero -->
-<section class="order-hero">
-  <div class="container">
-    <h1 class="text-secondary">Order Your Website ✨</h1>
-    <p>Fill in your details below and we’ll send payment instructions via email. Simple, secure, and professional.</p>
+<section class="order-hero d-flex align-items-center justify-content-center min-vh-50">
+  <div class="container text-center">
+    <div class="hero-card p-4 p-md-5 rounded-4 shadow-lg">
+      <h1 class="text-white mb-3">Order Your Website</h1>
+      <p class="text-white mb-0">Fill in your details below and we’ll send payment instructions via email. Simple, secure, and professional.</p>
+    </div>
   </div>
 </section>
 
+
 <!-- Form Section -->
-<section class="pb-5">
+<section class="order-form-section d-flex align-items-center justify-content-center min-vh-100">
   <div class="container">
     <div class="row justify-content-center">
 
-      <div class="col-lg-7">
-        <div class="glass-card">
+      <div class="col-lg-6">
+        <div class="glass-card p-5 rounded-4 shadow-lg">
 
           <h3 class="text-center mb-4">Website Order Form</h3>
 
           <form action="https://formsubmit.co/jennasm2019@gmail.com" method="POST" novalidate>
 
-  <!-- Hidden settings -->
-  <input type="hidden" name="_subject" value="New Website Order!">
-  <input type="hidden" name="_captcha" value="false">
-  <input type="hidden" name="_template" value="table">
+            <!-- Hidden settings -->
+            <input type="hidden" name="_subject" value="New Website Order!">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_next" value="https://shorelinewebdesign.netlify.app/thankyou.html">
 
-  <!-- Name -->
-  <div class="mb-3">
-    <label class="form-label">Full Name</label>
-    <div class="input-group">
-      <span class="input-group-text"><i class="bi bi-person"></i></span>
-      <input 
-        type="text" 
-        class="form-control" 
-        name="Name" 
-        placeholder="Your full name" 
-        required
-        minlength="3"
-      >
-    </div>
-  </div>
+            <!-- Name -->
+            <div class="mb-3">
+              <label class="form-label">Full Name</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-person"></i></span>
+                <input type="text" class="form-control" name="Name" placeholder="Your full name" required minlength="3">
+              </div>
+            </div>
 
-  <!-- Email -->
-  <div class="mb-3">
-    <label class="form-label">Email Address</label>
-    <div class="input-group">
-      <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-      <input 
-        type="email" 
-        class="form-control" 
-        name="Email" 
-        placeholder="you@example.com" 
-        required
-      >
-    </div>
-  </div>
+            <!-- Email -->
+            <div class="mb-3">
+              <label class="form-label">Email Address</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                <input type="email" class="form-control" name="Email" placeholder="you@example.com" required>
+              </div>
+            </div>
 
-  <!-- Bundle -->
-  <div class="mb-3">
-    <label class="form-label">Choose a Package</label>
-    <select class="form-select" name="Bundle" required>
-      <option value="">Select your package</option>
-      <option>Basic – R500 (1-page website)</option>
-      <option>Standard – R1200 (up to 5 pages)</option>
-      <option>Premium – R2000+ (full website / e-commerce)</option>
-    </select>
-  </div>
+            <!-- Bundle -->
+            <div class="mb-3">
+              <label class="form-label">Choose a Package</label>
+              <select class="form-select" name="Bundle" required>
+                <option value="">Select your package</option>
+                <option>Basic – R500 (1-page website)</option>
+                <option>Standard – R1200 (up to 5 pages)</option>
+                <option>Premium – R2000+ (full website / e-commerce)</option>
+              </select>
+            </div>
 
-  <!-- Notes -->
-  <div class="mb-3">
-    <label class="form-label">Project Details (optional)</label>
-    <textarea 
-      class="form-control" 
-      name="Notes" 
-      rows="4" 
-      placeholder="Tell me about your website idea..."
-      maxlength="1000"
-    ></textarea>
-  </div>
+            <!-- Notes -->
+            <div class="mb-3">
+              <label class="form-label">Project Details (optional)</label>
+              <textarea class="form-control" name="Notes" rows="4" placeholder="Tell me about your website idea..." maxlength="1000"></textarea>
+            </div>
 
-    <!-- Redirect after submit -->
-  <input type="hidden" name="_next" value="https://shorelinewebdesign.netlify.app/thankyou.html">
+             <!-- Redirect after submit -->
+            <input type="hidden" name="_next" value="https://shorelinewebdesign.netlify.app/thankyou.html">
 
-  <button type="submit" class="btn btn-danger w-100">
-    Submit Order 🚀
-  </button>
+            <button type="submit" class="btn btn-danger w-100">
+              Submit Order 🚀
+            </button>
 
-</form>
-
+          </form>
 
         </div>
       </div>
@@ -133,6 +117,7 @@
     </div>
   </div>
 </section>
+
 
 <!-- Footer -->
 <footer>
