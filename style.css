@@ -147,7 +147,7 @@ footer {
   transition: all .25s;
 }
 .btn-gold { background: var(--gold); color: var(--bg); }
-.btn-gold:hover { background: #f15e5e; transform: translateY(-1px); box-shadow: 0 8px 32px rgba(201,168,76,.25); }
+.btn-gold:hover { background: #6fe4f3e5; transform: translateY(-1px); box-shadow: 0 8px 32px rgba(201,168,76,.25); }
 .btn-outline { background: transparent; color: var(--heading); border: 1px solid var(--border); }
 .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
 
