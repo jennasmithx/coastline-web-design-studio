@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Shoreline Web Design Studio | Order</title>
+  <title>Shoreline Web Design Studio | Contact</title>
 
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -13,24 +13,25 @@
 
 <!-- NAV -->
 <nav>
-    <div class="container">
-      <a class="nav-logo" href="index.html">Shoreline Web Design<span>.</span></a>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="pricing.html">Pricing</a></li>
-        <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
-      </ul>
-    </div>
-  </nav>
+  <div class="container">
+    <a class="nav-logo" href="index.html">Shoreline Web Design<span>.</span></a>
+
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
+    </ul>
+  </div>
+</nav>
 
 
 <!-- PAGE -->
 <section class="page-wrap">
   <div class="container">
 
-    <div class="label">Order</div>
+    <div class="label">Contact</div>
 
     <h1 class="section-title fade-up">
       Start your <em>project</em>
@@ -44,7 +45,10 @@
         <form action="thankyou.html">
 
           <input type="text" placeholder="Full Name" required>
+
           <input type="email" placeholder="Email Address" required>
+
+          <input type="text" placeholder="Business / Brand Name (Optional)">
 
           <select required>
             <option value="">Select Package</option>
@@ -53,7 +57,22 @@
             <option>Premium</option>
           </select>
 
-          <textarea rows="6" placeholder="Describe your project..." required></textarea>
+          <input 
+            type="text" 
+            placeholder="Any websites or styles you like? (Optional)"
+          >
+
+          <textarea 
+            rows="6" 
+            placeholder="Briefly describe the website you want..."
+            required
+          ></textarea>
+
+          <p class="form-note">
+            Don’t worry about all the details yet — after submitting,
+            we’ll contact you to discuss colours, pages, features,
+            branding, and the overall style of your website.
+          </p>
 
           <button class="btn btn-gold" style="width:100%;">
             Submit Order
@@ -70,13 +89,15 @@
 
         <p>✔ We review your request</p>
         <p>✔ We contact you within 24 hours</p>
+        <p>✔ We discuss your vision & branding</p>
         <p>✔ You receive a custom quote</p>
         <p>✔ We start building your site</p>
 
         <div class="divider"></div>
 
         <p style="color:var(--muted); font-size:.85rem;">
-          Every project is handcrafted — no templates, no shortcuts.
+          Every project is carefully crafted to match your brand,
+          goals, and style — no generic templates.
         </p>
 
       </div>

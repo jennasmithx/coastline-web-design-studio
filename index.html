@@ -21,7 +21,16 @@
         <li><a href="contact.html" class="nav-cta">Get a Quote</a></li>
       </ul>
     </div>
+    <button class="hamburger" id="burger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+  <a href="#work">Work</a>
+  <a href="#services">Services</a>
+  <a href="#contact" class="nav-cta">Get a Quote</a>
+</div>
 
   <div class="page-wrap">
 
@@ -202,5 +211,18 @@
     </div>
   </footer>
 
+  <script>
+      const burger = document.getElementById('burger');
+      const menu = document.getElementById('mobileMenu');
+      burger.addEventListener('click', () => {
+        burger.classList.toggle('open');
+        menu.classList.toggle('open');
+      });
+      menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        burger.classList.remove('open');
+        menu.classList.remove('open');
+      }));
+    </script>
+    
 </body>
 </html>
