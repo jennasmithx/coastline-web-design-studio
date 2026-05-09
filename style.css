@@ -434,7 +434,7 @@ nav.navbar {
   font-family: var(--serif);
   font-size: 2.5rem;
   font-weight: 300;
-  color: var(--border);
+  color: rgb(121, 121, 121);
   margin-bottom: 20px;
 }
 
@@ -1106,7 +1106,7 @@ footer {
   font-family: var(--serif);
   font-size: 3.5rem;
   font-weight: 300;
-  color: var(--border);
+  color: rgb(121, 121, 121);
   line-height: 1;
 }
 
@@ -1258,9 +1258,9 @@ glass-card {
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  background: rgba(212, 175, 55, 0.15);
-  border: 1px solid rgba(212, 175, 55, 0.4);
-  color: #d4af37;
+  background: #1e1f22;
+  border: 1px solid #309eac;
+  color: #309eac;
   font-size: 28px;
   font-weight: bold;
   display: flex;
