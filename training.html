@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elevate Coaching</title>
+  <link rel="icon" type="image/png" href="anime.jpg">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* FIX: navbar overlap */
+    body {
+      padding-top: 70px;
+      font-family: 'Poppins', sans-serif;
+      background: #0b0f19;
+    }
+
+    /* FIX: hero spacing */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
+    /* FIX: prevent image squashing */
+    .hero-img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+    }
+
+    /* FIX: stats spacing */
+    .stats-section {
+      padding: 60px 0;
+    }
+
+    /* FIX: cards consistency */
+    .program-card,
+    .coach-card,
+    .testimonial-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 25px;
+      height: 100%;
+    }
+
+    /* FIX: coach images */
+    .coach-card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    /* FIX: section titles spacing */
+    .section-title {
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    /* CTA */
+    .cta-section {
+      padding: 80px 0;
+      background: #0e1424;
+    }
+
+    /* footer */
+    .footer {
+      padding: 20px 0;
+      color: #aaa;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark glass-nav">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">ELEVATE</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#programs">Programs</a></li>
+        <li class="nav-item"><a class="nav-link" href="#coaches">Coaches</a></li>
+        <li class="nav-item"><a class="nav-link" href="#results">Results</a></li>
+        <li class="nav-item"><a class="nav-link btn btn-gradient ms-lg-3 px-4" href="#contact">Join Now</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero-section d-flex align-items-center">
+  <div class="container">
+    <div class="row align-items-center">
+
+      <div class="col-lg-6 text-white">
+        <h1 class="display-4 fw-bold">Transform Your Mind.<br>Upgrade Your Body.</h1>
+        <p class="lead mt-3">Elite training & coaching designed to unlock your full potential.</p>
+
+        <div class="mt-4">
+          <a href="#programs" class="btn btn-gradient btn-lg me-2">Explore Programs</a>
+          <a href="#contact" class="btn btn-outline-light btn-lg">Get Coaching</a>
+        </div>
+      </div>
+
+      <div class="col-lg-6 text-center mt-4 mt-lg-0">
+        <img src="https://images.unsplash.com/photo-1554284126-aa88f22d8b74?auto=format&fit=crop&w=900&q=80" class="hero-img" alt="">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section">
+  <div class="container">
+    <div class="row text-center">
+
+      <div class="col-md-3">
+        <h2>10K+</h2>
+        <p>Clients Coached</p>
+      </div>
+
+      <div class="col-md-3">
+        <h2>250+</h2>
+        <p>Training Plans</p>
+      </div>
+
+      <div class="col-md-3">
+        <h2>98%</h2>
+        <p>Success Rate</p>
+      </div>
+
+      <div class="col-md-3">
+        <h2>15+</h2>
+        <p>Expert Coaches</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs" class="py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title">Elite Training Programs</h2>
+      <p class="text-muted">Designed for performance, mindset, and transformation.</p>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="program-card">
+          <h4>🔥 Strength & Conditioning</h4>
+          <p>Build power, endurance, and resilience with structured systems.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="program-card">
+          <h4>🧠 Mindset Coaching</h4>
+          <p>Develop discipline, focus, and mental toughness for peak performance.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="program-card">
+          <h4>⚡ High-Performance Training</h4>
+          <p>Advanced coaching tailored for athletes and ambitious individuals.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COACHES -->
+<section id="coaches" class="py-5 bg-dark text-white">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title">Meet Our Coaches</h2>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="coach-card text-center">
+          <img src="anime.jpg">
+          <h5>Alex Morgan</h5>
+          <p>Performance Coach</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="coach-card text-center">
+          <img src="anime.jpg">
+          <h5>Jade Williams</h5>
+          <p>Mindset Strategist</p>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="coach-card text-center">
+          <img src="anime.jpg">
+          <h5>Chris Taylor</h5>
+          <p>Strength Specialist</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results" class="py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="section-title">Real Results</h2>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="testimonial-card">
+          <p>"This coaching completely changed my mindset and fitness level."</p>
+          <h6>- Sarah K.</h6>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="testimonial-card">
+          <p>"I hit goals I never thought were possible. 10/10."</p>
+          <h6>- Daniel R.</h6>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="testimonial-card">
+          <p>"Elite coaching, elite results. Worth every second."</p>
+          <h6>- Mia L.</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" class="cta-section text-white text-center">
+  <div class="container">
+    <h2 class="fw-bold">Ready to Level Up?</h2>
+    <p class="lead">Join our coaching program and start your transformation today.</p>
+    <a href="#" class="btn btn-secondary btn-lg mt-3">Start Coaching</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container text-center">
+    <p>© 2026 Elevate Coaching. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
