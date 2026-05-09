@@ -53,57 +53,49 @@ body::before {
 section { position: relative; z-index: 1; }
 
 /* ─── NAV ─── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0;
+nav.navbar {
   height: var(--nav-h);
-  background: rgba(17,18,20,.85);
+  background: rgba(17,18,20,.85) !important;
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
-  z-index: 100;
-  display: flex; align-items: center;
 }
-nav .container { display: flex; align-items: center; justify-content: space-between; width: 100%; }
 .nav-logo {
   font-family: var(--serif);
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--heading);
+  color: var(--heading) !important;
   letter-spacing: .03em;
 }
 .nav-logo span { color: var(--gold); }
-.nav-links { display: flex; gap: 36px; align-items: center; }
-.nav-links a {
+.navbar-nav .nav-link {
   font-size: .8rem;
   font-weight: 500;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: var(--body);
-  transition: color .2s;
-  position: relative;
+  color: var(--body) !important;
 }
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px; left: 0;
-  width: 0; height: 1px;
-  background: var(--gold);
-  transition: width .25s;
-}
-.nav-links a:hover,
-.nav-links a.active { color: var(--heading); }
-.nav-links a:hover::after,
-.nav-links a.active::after { width: 100%; }
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active { color: var(--heading) !important; }
 .nav-cta {
   font-size: .75rem !important;
   letter-spacing: .12em;
-  padding: 10px 22px;
-  border: 1px solid var(--gold);
+  padding: 10px 22px !important;
+  border: 1px solid var(--gold) !important;
   color: var(--gold) !important;
-  border-radius: var(--radius);
-  transition: background .2s, color .2s !important;
+  border-radius: var(--radius) !important;
 }
-.nav-cta::after { display: none !important; }
-.nav-cta:hover { background: var(--gold); color: var(--bg) !important; }
+.nav-cta:hover { background: var(--gold) !important; color: var(--bg) !important; }
+.navbar-toggler { border-color: var(--gold); }
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23309eac' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+.navbar-collapse {
+  background: rgba(17,18,20,0.98);
+  padding: 12px 0;
+}
+@media (min-width: 992px) {
+  .navbar-collapse { background: transparent; padding: 0; }
+}
 
 /* ─── FOOTER ─── */
 footer {
@@ -207,14 +199,6 @@ footer {
 
 /* ─── PAGE WRAPPER ─── */
 .page-wrap { padding-top: var(--nav-h); }
-
-/* ─── RESPONSIVE ─── */
-@media (max-width: 768px) {
-  .container { padding: 0 20px; }
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-  .mobile-menu.open { display: flex; }
-}
 
 /* ─── THANK YOU PAGE ─── */
 
@@ -726,59 +710,3 @@ footer {
   margin-bottom: 1.2rem;
 }
 
-/* ─── HAMBURGER BUTTON ─── */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  width: 36px;
-  height: 36px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-}
-.hamburger span {
-  display: block;
-  width: 22px;
-  height: 1.5px;
-  background: var(--heading);
-  transition: transform .3s, opacity .3s;
-  transform-origin: center;
-}
-.hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-
-/* ─── MOBILE DROPDOWN MENU ─── */
-.mobile-menu {
-  display: none;
-  flex-direction: column;
-  background: rgba(17, 18, 20, 0.98);
-  border-top: 1px solid var(--border);
-  padding: 24px 20px;
-  position: fixed;
-  top: var(--nav-h);
-  left: 0; right: 0;
-  z-index: 99;
-}
-.mobile-menu a {
-  font-size: .78rem;
-  font-weight: 500;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--body);
-  text-decoration: none;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--border);
-}
-.mobile-menu a:last-child { border-bottom: none; }
-.mobile-menu .nav-cta {
-  margin-top: 20px;
-  text-align: center;
-  border: 1px solid var(--gold);
-  color: var(--gold) !important;
-  border-radius: var(--radius);
-  padding: 12px;
-}
