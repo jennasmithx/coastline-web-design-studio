@@ -605,7 +605,7 @@ footer {
   color: var(--muted);
 }
 
-.footer-links h4 {
+.footer-links h3 {
   font-family: var(--serif);
   font-size: .7rem;
   letter-spacing: .14em;
@@ -930,7 +930,6 @@ footer {
 }
 
 .page-hero::after {
-  content: 'ABOUT';
   position: absolute;
   right: 0;
   top: 50%;
@@ -1278,13 +1277,13 @@ p {
 }
 
 .btn-gold {
-  border: 1px solid #d4af37;
-  color: #d4af37;
+  border: 1px solid #309eac;
+  color: #309eac;
   transition: 0.25s ease;
 }
 
 .btn-gold:hover {
-  background: #d4af37;
+  background: #309eac;
   color: #111;
   transform: translateY(-2px);
 }
@@ -1302,5 +1301,169 @@ small {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+.small-text {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  color: var(--gray);
+  max-width: 700px;
+}
+
+/* ─── E-COMMERCE PAGE (ADDITIONS) ─── */
+
+.ecom-hero-note {
+  font-size: 0.95rem;
+  color: var(--muted);
+  max-width: 600px;
+  line-height: 1.8;
+  margin-top: 20px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 60px;
+}
+
+.product-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: all .3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold-dim);
+  box-shadow: 0 20px 60px rgba(0,0,0,.5);
+}
+
+.product-title {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  color: var(--heading);
+  margin-bottom: 10px;
+}
+
+.product-desc {
+  font-size: .9rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.product-price {
+  margin-top: 14px;
+  color: var(--gold);
+  font-size: 1.2rem;
+}
+
+.product-btn {
+  margin-top: 18px;
+  display: inline-block;
+  padding: 10px 20px;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  border-radius: var(--radius);
+  transition: .25s;
+}
+
+.product-btn:hover {
+  background: var(--gold);
+  color: var(--bg);
+}
+
+/* ─── SEO PAGE EXTRA POLISH ─── */
+
+.ecom-hero-note {
+  font-size: .95rem;
+  color: var(--muted);
+  max-width: 650px;
+  margin-top: 18px;
+  line-height: 1.8;
+}
+
+.pricing {
+  padding: 100px 0;
+}
+
+.price-card ul li {
+  position: relative;
+}
+
+.price-card ul li::before {
+  content: "✓";
+  color: var(--gold);
+  margin-right: 8px;
+}
+
+/* ─── WEB DESIGN / DEV PAGE ─── */
+.web-hero::after {
+  content: "DESIGN DEV";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--serif);
+  font-size: clamp(6rem, 14vw, 12rem);
+  font-weight: 300;
+  color: rgba(201, 168, 76, .04);
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* GRID FOR SERVICE BLOCKS */
+.service-detail {
+  padding: 100px 0;
+}
+
+.service-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+
+/* GLASS STYLE CARDS */
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px 30px;
+  backdrop-filter: blur(14px);
+  transition: all .3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--gold-dim);
+}
+
+/* TEXT INSIDE CARDS */
+.glass-card h3 {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  color: var(--heading);
+  margin-bottom: 12px;
+}
+
+.glass-card p {
+  font-size: .9rem;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .service-detail-grid {
+    grid-template-columns: 1fr;
   }
 }
