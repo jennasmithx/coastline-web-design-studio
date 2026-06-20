@@ -82,12 +82,16 @@ section {
 }
 
 /* ─── NAV ─── */
-nav.navbar {
-  min-height: var(--nav-h);
-  height: auto;
-  gap: 12px;
-  display: flex;
-  align-items: center;
+@media (max-width: 991px) {
+  .navbar-nav {
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .navbar-nav .nav-link {
+    padding: 10px 0;
+    width: 100%;
+  }
 }
 
 .nav-logo {
