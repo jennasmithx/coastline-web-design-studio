@@ -83,10 +83,11 @@ section {
 
 /* ─── NAV ─── */
 nav.navbar {
-  height: var(--nav-h);
-  background: rgba(17, 18, 20, .92) !important;
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border);
+  min-height: var(--nav-h);
+  height: auto;
+  gap: 12px;
+  display: flex;
+  align-items: center;
 }
 
 .nav-logo {
@@ -141,15 +142,17 @@ nav.navbar {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23309eac' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
 }
 
-.navbar-collapse {
-  background: rgba(17, 18, 20, 0.98);
-  padding: 12px 0;
-}
-
-@media (min-width: 992px) {
+@media (max-width: 991px) {
   .navbar-collapse {
-    background: transparent !important;
-    padding: 0;
+    position: absolute;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+
+    background: rgba(17, 18, 20, 0.98);
+    border-bottom: 1px solid var(--border);
+    padding: 16px;
+    z-index: 999;
   }
 }
 
