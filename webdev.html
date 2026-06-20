@@ -3,18 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Elvora Studio — Premium Web Design</title>
+  <title>Web Design & Development — Elvora Studio</title>
   <link rel="icon" type="image/png" href="images/logo.png">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<!-- NAV -->
+  <!-- NAV -->
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container-fluid px-4">
       <a class="nav-logo navbar-brand" href="index.html">Elvora Studio<span>.</span></a>
@@ -24,7 +22,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navMenu">
         <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
-          <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
           <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
           <li class="nav-item"><a href="projects.html" class="nav-link">Projects</a></li>
           <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
@@ -36,84 +34,202 @@
 
   <div class="page-wrap">
 
-<!-- WEB DESIGN + DEVELOPMENT PAGE -->
-<section class="page-hero web-hero">
-  <div class="container">
-    <div class="page-hero-inner">
-      <h1>Web Design & <em>Development</em></h1>
-      <p>
-        We create websites that are both visually refined and technically solid.
-        From layout and branding to full build functionality — everything is designed to perform.
-      </p>
-    </div>
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-inner">
+          <div class="label fade-up">Web Design & Development</div>
+          <h1 class="fade-up delay-1">Designed with intent.<br><em>Built to perform.</em></h1>
+          <p class="fade-up delay-2">Every site we create is custom — no templates, no shortcuts. From the first concept to the final line of code, design and development work together as one seamless process.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTRO STRIP -->
+    <section class="about-strip">
+      <div class="container">
+        <div class="about-strip-inner">
+          <div class="about-strip-text">
+            <div class="label">One Process</div>
+            <h2 class="section-title">Design and code<br><em>as one</em></h2>
+            <div class="divider"></div>
+            <p>Most studios hand off design to a developer and hope for the best. We don't work that way. Design and development happen together — so what gets built is exactly what was envisioned, with no quality lost in translation.</p>
+            <br>
+            <p>The result is a site that looks intentional, feels smooth, and works reliably on every device, every browser, every time.</p>
+          </div>
+          <div class="stats">
+            <div class="stat">
+              <div class="stat-num">0</div>
+              <div class="stat-label">Templates Used</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">100%</div>
+              <div class="stat-label">Custom Built</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">All</div>
+              <div class="stat-label">Devices & Browsers</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">14d</div>
+              <div class="stat-label">Avg. Turnaround</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESIGN -->
+    <section class="services">
+      <div class="container">
+        <div class="label">Web Design</div>
+        <h2 class="section-title">Every detail is<br><em>intentional</em></h2>
+        <div class="services-grid">
+          <div class="service-item">
+            <div class="service-num">01</div>
+            <h3>Custom Visual Design</h3>
+            <p>No page builders, no Wix, no Squarespace. Every layout, colour choice, and typographic decision is made specifically for your brand and audience.</p>
+          </div>
+          <div class="service-item">
+            <div class="service-num">02</div>
+            <h3>Brand-Led Direction</h3>
+            <p>Design starts with understanding your brand — your tone, your audience, and what you want people to feel when they land on your site.</p>
+          </div>
+          <div class="service-item">
+            <div class="service-num">03</div>
+            <h3>Typography & Hierarchy</h3>
+            <p>The right fonts, sizes, and spacing guide visitors through your content naturally — making the important things stand out without needing to shout.</p>
+          </div>
+          <div class="service-item">
+            <div class="service-num">04</div>
+            <h3>Animations & Interactions</h3>
+            <p>Subtle motion and hover effects add polish and personality — making the experience feel premium without slowing anything down.</p>
+          </div>
+          <div class="service-item">
+            <div class="service-num">05</div>
+            <h3>Mobile-First Layouts</h3>
+            <p>Design is built for mobile from the start, not adapted from desktop after the fact. Everything looks considered on every screen size.</p>
+          </div>
+          <div class="service-item">
+            <div class="service-num">06</div>
+            <h3>Revision Rounds</h3>
+            <p>You get dedicated revision rounds to refine the design before a single line of code is written — so we're aligned before we build.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEVELOPMENT -->
+    <section class="services" style="border-top: 1px solid var(--border);">
+      <div class="container">
+        <div class="label">Development</div>
+        <h2 class="section-title">Clean code.<br><em>Fast results.</em></h2>
+        <div class="services-grid">
+          <div class="service-item">
+            <div class="service-num">01</div>
+            <h3>Hand-Written Code</h3>
+            <p>No bloated page builders or auto-generated markup. Clean, readable HTML, CSS, and JavaScript that loads fast and is easy to maintain.</p>
+          </div>
+          <div class="service-item">
+            <div class="service-num">02</div>
+            <h3>Responsive Development</h3>
+            <p>Every breakpoint is tested and refined — desktop, tablet, and mobile — so the site behaves exactly as designed across all screen sizes.</p>
+          </div>
+          <div class="service-item">
+            <div class="service-num">03</div>
+            <h3>Cross-Browser Compatibility</h3>
+            <p>Tested across Chrome, Safari, Firefox, and Edge so every visitor gets the same experience regardless of what they're browsing on.</p>
+          </div>
+          <div class="service-item">
+            <div class="service-num">04</div>
+            <h3>Performance Optimised</h3>
+            <p>Images compressed, assets minified, render-blocking resources eliminated. Fast load times are a feature, not an afterthought.</p>
+          </div>
+          <div class="service-item">
+            <div class="service-num">05</div>
+            <h3>Forms & Integrations</h3>
+            <p>Working contact forms, Google Maps embeds, social links, and third-party tools — all connected and tested before handoff.</p>
+          </div>
+          <div class="service-item">
+            <div class="service-num">06</div>
+            <h3>Deployment & Go-Live</h3>
+            <p>We handle the technical side of launching — domain setup, hosting config, SSL, and a final round of checks before the site goes public.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="process">
+      <div class="container">
+        <div class="label">Our Process</div>
+        <h2 class="section-title">From brief to<br><em>live site</em></h2>
+        <div class="process-list">
+          <div class="process-step">
+            <div class="step-num">01</div>
+            <div class="step-body">
+              <h3>Discovery</h3>
+              <p>We start with a proper conversation — your brand, your goals, your audience, and what you need the site to actually do. Everything that follows is built on this foundation.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="step-num">02</div>
+            <div class="step-body">
+              <h3>Design Concept</h3>
+              <p>We develop the visual direction — layout, colour palette, typography, and overall feel — and share it with you before any development begins.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="step-num">03</div>
+            <div class="step-body">
+              <h3>Revisions</h3>
+              <p>You give feedback, we refine. This is your site — we iterate until the design feels exactly right before moving forward.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="step-num">04</div>
+            <div class="step-body">
+              <h3>Development</h3>
+              <p>The approved design is built out in clean, fast code. Every page, every interaction, every form — developed to match the design precisely.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="step-num">05</div>
+            <div class="step-body">
+              <h3>Testing</h3>
+              <p>Cross-device, cross-browser, all forms and links checked. We don't launch until everything works exactly as it should.</p>
+            </div>
+          </div>
+          <div class="process-step">
+            <div class="step-num">06</div>
+            <div class="step-body">
+              <h3>Launch & Handoff</h3>
+              <p>We deploy the site, walk you through everything, and hand it over with full confidence. Ongoing support is available if you need it.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-band">
+      <div class="container">
+        <div class="cta-band-inner">
+          <h2>Let's build something<br><em style="font-style:italic; color:var(--gold)">worth remembering.</em></h2>
+          <p>Tell us about your project and we'll take it from there.</p>
+          <a href="contact.html" class="btn btn-gold">Start a Project</a>
+        </div>
+      </div>
+    </section>
+
   </div>
-</section>
 
-<section class="service-detail">
-  <div class="container">
-
-    <div class="service-detail-grid">
-
-      <div class="glass-card">
-        <h3>Web Design</h3>
-        <p>
-          Clean, modern UI design focused on branding, structure, and user experience.
-          Every layout is custom and tailored to your business identity.
-        </p>
-      </div>
-
-      <div class="glass-card">
-        <h3>User Experience (UX)</h3>
-        <p>
-          Strategic layout flow designed to guide users smoothly through your website
-          and increase engagement and conversions.
-        </p>
-      </div>
-
-      <div class="glass-card">
-        <h3>Web Development</h3>
-        <p>
-          Fully responsive builds using clean HTML and CSS structure.
-          Fast, lightweight, and optimised for all devices.
-        </p>
-      </div>
-
-      <div class="glass-card">
-        <h3>Functionality</h3>
-        <p>
-          Interactive elements like forms, navigation systems, and dynamic sections
-          built for real-world business use.
-        </p>
-      </div>
-
-      <div class="glass-card">
-        <h3>Responsive Design</h3>
-        <p>
-          Your site adapts perfectly across mobile, tablet, and desktop —
-          ensuring a seamless experience everywhere.
-        </p>
-      </div>
-
-      <div class="glass-card">
-        <h3>Performance Focus</h3>
-        <p>
-          Optimised code structure for fast loading, smooth animations,
-          and efficient browsing performance.
-        </p>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-<footer>
+  <!-- FOOTER -->
+  <footer>
     <div class="container">
       <div class="footer-inner">
         <div class="footer-brand">
-          <div class="nav-logo">
-            Elvora Studio<span style="color: var(--gold)">.</span>
-          </div>
+          <div class="nav-logo">Elvora Studio<span style="color:var(--gold)">.</span></div>
           <p>Premium web design for brands that mean business.</p>
         </div>
         <div class="footer-links">
@@ -136,7 +252,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2026 Elvora Studio Studio. All rights reserved.</span>
+        <span>© 2026 Elvora Studio. All rights reserved.</span>
         <span>elvorastudio.design@gmail.com</span>
       </div>
     </div>
