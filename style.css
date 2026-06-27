@@ -94,6 +94,12 @@ section {
   }
 }
 
+.navbar {
+  background: rgba(17, 18, 20, 0.92) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
 .nav-logo {
   font-family: var(--serif) !important;
   font-size: 1.5rem !important;
