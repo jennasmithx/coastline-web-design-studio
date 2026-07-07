@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mine Core Engineering — Structural, Geotechnical &amp; Site Civil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --concrete: #DEDBD2;
+    --concrete-deep: #CBC7BA;
+    --ink: #1D1E1B;
+    --steel: #3E4C56;
+    --rebar: #23262A;
+    --safety: #C9781E;
+    --safety-dim: #a86419;
+    --line: rgba(29,30,27,0.16);
+    --line-strong: rgba(29,30,27,0.32);
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'IBM Plex Sans', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+    --max: 1180px;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--concrete);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px;}
+
+  ::selection{background:var(--safety);color:var(--concrete);}
+
+  :focus-visible{outline:2px solid var(--safety);outline-offset:3px;}
+
+  /* ── eyebrow / label ── */
+  .eyebrow{
+    display:flex;align-items:center;gap:10px;
+    font-family:var(--mono);
+    font-size:.72rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--steel);
+    margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:22px;height:1px;
+    background:var(--safety);
+  }
+
+  /* ── dimension-line divider (signature motif) ── */
+  .dim-line{
+    display:flex;align-items:center;gap:14px;
+    width:100%;
+    margin:0;
+    color:var(--steel);
+    font-family:var(--mono);
+    font-size:.7rem;
+    letter-spacing:.08em;
+  }
+  .dim-line .tick{width:1px;height:9px;background:var(--line-strong);flex-shrink:0;}
+  .dim-line .run{flex:1;height:1px;background:var(--line-strong);position:relative;}
+  .dim-line .label{white-space:nowrap;padding:0 2px;}
+
+  /* ── NAV ── */
+  header{
+    position:fixed;top:0;left:0;right:0;
+    z-index:100;
+    background:rgba(222,219,210,.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    height:76px;
+  }
+  .logo{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:1.15rem;
+    letter-spacing:.01em;
+  }
+  .logo span{color:var(--safety);}
+  .nav-links{display:flex;align-items:center;gap:36px;}
+  .nav-links a{
+    font-family:var(--mono);
+    font-size:.76rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--steel);
+    transition:color .2s;
+  }
+  .nav-links a:hover{color:var(--ink);}
+  .nav-cta{
+    font-family:var(--mono) !important;
+    font-size:.72rem !important;
+    padding:11px 20px;
+    background:var(--ink);
+    color:var(--concrete) !important;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    transition:background .2s;
+  }
+  .nav-cta:hover{background:var(--safety);}
+  .nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;}
+  .nav-toggle span{display:block;width:22px;height:2px;background:var(--ink);margin:5px 0;}
+
+  /* ── HERO ── */
+  .hero{
+    padding:168px 0 90px;
+    border-bottom:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    gap:64px;
+    align-items:center;
+  }
+  .hero h1{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(2.4rem, 4.4vw, 3.9rem);
+    line-height:1.06;
+    letter-spacing:-.01em;
+    color:var(--ink);
+    margin-bottom:24px;
+  }
+  .hero h1 em{
+    font-style:normal;
+    color:var(--steel);
+    border-bottom:3px solid var(--safety);
+  }
+  .hero p.lede{
+    font-size:1.05rem;
+    color:#4b4d47;
+    max-width:480px;
+    margin-bottom:36px;
+    line-height:1.75;
+  }
+  .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:56px;}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:var(--mono);
+    font-size:.76rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    padding:15px 26px;
+    border-radius:2px;
+    cursor:pointer;
+    transition:all .22s;
+    border:1px solid transparent;
+  }
+  .btn-primary{background:var(--safety);color:var(--concrete);}
+  .btn-primary:hover{background:var(--safety-dim);transform:translateY(-1px);}
+  .btn-outline{border-color:var(--line-strong);color:var(--ink);}
+  .btn-outline:hover{border-color:var(--ink);background:rgba(29,30,27,.04);}
+
+  .stat-strip{
+    display:flex;
+    gap:0;
+    border-top:1px solid var(--line-strong);
+    padding-top:22px;
+  }
+  .stat{
+    flex:1;
+    padding-right:24px;
+    border-right:1px solid var(--line);
+  }
+  .stat:last-child{border-right:none;padding-right:0;}
+  .stat-num{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:1.6rem;
+    color:var(--ink);
+    display:block;
+  }
+  .stat-label{
+    font-family:var(--mono);
+    font-size:.66rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--steel);
+    margin-top:4px;
+    display:block;
+  }
+
+  .hero-art{
+    aspect-ratio:1/0.92;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+  }
+  .hero-art svg{width:100%;height:100%;}
+
+  /* ── SECTION shared ── */
+  section{padding:100px 0;position:relative;}
+  section.alt{background:var(--concrete-deep);}
+  .section-head{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:48px;
+    align-items:end;
+    margin-bottom:56px;
+  }
+  h2.section-title{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:clamp(1.9rem,3vw,2.6rem);
+    line-height:1.15;
+    color:var(--ink);
+  }
+  .section-note{
+    font-size:.94rem;
+    color:#4b4d47;
+    line-height:1.75;
+  }
+
+  /* ── SERVICES ── */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--line-strong);
+    border:1px solid var(--line-strong);
+  }
+  .service-item{
+    background:var(--concrete);
+    padding:34px 30px;
+    transition:background .25s;
+  }
+  section.alt .service-item{background:var(--concrete-deep);}
+  .service-item:hover{background:rgba(255,255,255,.35);}
+  .service-icon{width:34px;height:34px;color:var(--steel);margin-bottom:20px;}
+  .service-item h3{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:1.12rem;
+    margin-bottom:10px;
+    color:var(--ink);
+  }
+  .service-item p{font-size:.87rem;color:#54564f;line-height:1.7;}
+
+  /* ── PROJECTS ── */
+  .projects-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .project-card{
+    background:var(--concrete);
+    border:1px solid var(--line-strong);
+    display:flex;
+    flex-direction:column;
+    transition:transform .25s, box-shadow .25s;
+  }
+  .project-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(29,30,27,.12);}
+  .project-art{
+    aspect-ratio:16/10;
+    background:var(--rebar);
+    display:flex;align-items:center;justify-content:center;
+    padding:22px;
+  }
+  .project-art svg{width:100%;height:100%;color:var(--concrete);}
+  .project-body{padding:24px 26px 26px;}
+  .project-tag{
+    font-family:var(--mono);
+    font-size:.66rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--safety-dim);
+    margin-bottom:8px;
+    display:block;
+  }
+  .project-body h3{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:1.2rem;
+    margin-bottom:14px;
+  }
+  .spec-block{
+    font-family:var(--mono);
+    font-size:.76rem;
+    color:var(--steel);
+    border-top:1px solid var(--line);
+    padding-top:14px;
+    display:grid;
+    gap:6px;
+  }
+  .spec-block div{display:flex;justify-content:space-between;}
+  .spec-block span:first-child{color:#6b6d66;}
+
+  /* ── PROCESS ── */
+  .process-list{border-top:1px solid var(--line-strong);}
+  .process-step{
+    display:grid;
+    grid-template-columns:90px 1fr;
+    gap:32px;
+    padding:34px 0;
+    border-bottom:1px solid var(--line-strong);
+  }
+  .step-num{
+    font-family:var(--mono);
+    font-weight:500;
+    font-size:.85rem;
+    color:var(--safety-dim);
+    padding-top:4px;
+  }
+  .step-body h3{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:1.25rem;
+    margin-bottom:8px;
+  }
+  .step-body p{font-size:.9rem;color:#4b4d47;max-width:620px;line-height:1.7;}
+
+  /* ── CREDENTIALS ── */
+  .cred-strip{
+    display:flex;
+    flex-wrap:wrap;
+    gap:1px;
+    background:var(--line-strong);
+    border:1px solid var(--line-strong);
+  }
+  .cred-item{
+    flex:1 1 220px;
+    background:var(--concrete);
+    padding:26px 24px;
+  }
+  .cred-item .cred-label{
+    font-family:var(--mono);
+    font-size:.66rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--steel);
+    margin-bottom:6px;
+    display:block;
+  }
+  .cred-item .cred-value{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:1.05rem;
+  }
+
+  /* ── CONTACT ── */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+  }
+  .contact-form{display:flex;flex-direction:column;gap:16px;}
+  .contact-form input,
+  .contact-form textarea{
+    width:100%;
+    background:transparent;
+    border:none;
+    border-bottom:1px solid var(--line-strong);
+    padding:12px 2px;
+    font-family:var(--body);
+    font-size:.95rem;
+    color:var(--ink);
+  }
+  .contact-form input::placeholder,
+  .contact-form textarea::placeholder{color:#7a7c74;}
+  .contact-form input:focus,
+  .contact-form textarea:focus{outline:none;border-color:var(--safety);}
+  .contact-form textarea{resize:vertical;min-height:110px;}
+  .contact-form button{align-self:flex-start;margin-top:8px;}
+
+  /* title block — signature element */
+  .title-block{
+    border:1px solid var(--line-strong);
+    background:var(--concrete-deep);
+    font-family:var(--mono);
+    font-size:.72rem;
+  }
+  .tb-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+  .tb-cell{
+    padding:14px 16px;
+    border-bottom:1px solid var(--line-strong);
+    border-right:1px solid var(--line-strong);
+  }
+  .tb-cell:nth-child(2n){border-right:none;}
+  .tb-cell .tb-k{color:var(--steel);letter-spacing:.06em;text-transform:uppercase;font-size:.62rem;display:block;margin-bottom:4px;}
+  .tb-cell .tb-v{color:var(--ink);font-weight:500;}
+  .tb-full{grid-column:1/-1;}
+
+  /* ── FOOTER as title block ── */
+  footer{
+    background:var(--rebar);
+    color:var(--concrete);
+    padding:64px 0 0;
+  }
+  .footer-top{
+    display:grid;
+    grid-template-columns:1.3fr 1fr 1fr 1fr;
+    gap:40px;
+    padding-bottom:48px;
+    border-bottom:1px solid rgba(222,219,210,.14);
+  }
+  .footer-brand .logo{color:var(--concrete);margin-bottom:14px;}
+  .footer-brand p{font-size:.85rem;color:#9a9c95;max-width:260px;line-height:1.7;}
+  .footer-col h4{
+    font-family:var(--mono);
+    font-size:.66rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--safety);
+    margin-bottom:16px;
+  }
+  .footer-col ul{display:flex;flex-direction:column;gap:10px;}
+  .footer-col a,.footer-col li{font-size:.85rem;color:#c2c4bc;}
+  .footer-col a:hover{color:var(--concrete);}
+
+  .footer-tb{
+    padding:28px 0;
+    display:flex;
+    flex-wrap:wrap;
+    gap:0;
+    font-family:var(--mono);
+    font-size:.7rem;
+  }
+  .footer-tb .fcell{
+    padding:8px 20px 8px 0;
+    margin-right:20px;
+    border-right:1px solid rgba(222,219,210,.14);
+    color:#9a9c95;
+  }
+  .footer-tb .fcell b{color:var(--concrete);font-weight:500;}
+  .footer-tb .fcell:last-child{border-right:none;}
+
+  .footer-bottom{
+    padding:20px 0 28px;
+    border-top:1px solid rgba(222,219,210,.14);
+    font-size:.76rem;
+    color:#84867e;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  /* ── reveal on scroll ── */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-art{max-width:420px;margin:0 auto;order:-1;}
+    .section-head{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:1fr 1fr;}
+    .projects-grid{grid-template-columns:1fr 1fr;}
+    .footer-top{grid-template-columns:1fr 1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+  }
+
+  @media (max-width:700px){
+    .nav-links{
+      position:absolute;top:76px;left:0;right:0;
+      background:var(--concrete);
+      flex-direction:column;
+      align-items:flex-start;
+      padding:20px 32px 28px;
+      border-bottom:1px solid var(--line);
+      display:none;
+      gap:18px;
+    }
+    .nav-links.open{display:flex;}
+    .nav-toggle{display:block;}
+    .stat-strip{flex-wrap:wrap;gap:18px 0;}
+    .stat{flex:1 1 45%;border-right:none;padding-right:0;}
+    .services-grid,.projects-grid{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr;}
+    .process-step{grid-template-columns:50px 1fr;gap:18px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav-inner">
+    <a href="#" class="logo">Mine <span>Core</span> Engineering</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#services">Disciplines</a>
+      <a href="#projects">Projects</a>
+      <a href="#process">Process</a>
+      <a href="#contact" class="nav-cta btn">Request Assessment</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">CIVIL &amp; STRUCTURAL ENGINEERING — EST. 2007</div>
+      <h1>We calculate<br>what has to <em>hold.</em></h1>
+      <p class="lede">Mine Core delivers structural, geotechnical, and site civil engineering for developments that can't afford to guess. From soil report to final sign-off, one team carries the load.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Request a Site Assessment</a>
+        <a href="#projects" class="btn btn-outline">View Recent Projects</a>
+      </div>
+      <div class="stat-strip">
+        <div class="stat"><span class="stat-num">18</span><span class="stat-label">Years Practising</span></div>
+        <div class="stat"><span class="stat-num">240+</span><span class="stat-label">Structures Certified</span></div>
+        <div class="stat"><span class="stat-num">0</span><span class="stat-label">Lost-Time Incidents, FY24</span></div>
+        <div class="stat"><span class="stat-num">ECSA</span><span class="stat-label">Registered Practice</span></div>
+      </div>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 420 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- ground line -->
+        <line x1="30" y1="330" x2="390" y2="330" stroke="#3E4C56" stroke-width="1.5"/>
+        <!-- columns -->
+        <line x1="70" y1="330" x2="70" y2="120" stroke="#1D1E1B" stroke-width="3"/>
+        <line x1="350" y1="330" x2="350" y2="120" stroke="#1D1E1B" stroke-width="3"/>
+        <line x1="210" y1="330" x2="210" y2="90" stroke="#1D1E1B" stroke-width="3"/>
+        <!-- top chord -->
+        <line x1="70" y1="120" x2="210" y2="90" stroke="#1D1E1B" stroke-width="3"/>
+        <line x1="210" y1="90" x2="350" y2="120" stroke="#1D1E1B" stroke-width="3"/>
+        <!-- bottom chord / bracing -->
+        <line x1="70" y1="120" x2="350" y2="120" stroke="#C9781E" stroke-width="2.5"/>
+        <line x1="70" y1="120" x2="210" y2="330" stroke="#3E4C56" stroke-width="1.5"/>
+        <line x1="350" y1="120" x2="210" y2="330" stroke="#3E4C56" stroke-width="1.5"/>
+        <line x1="210" y1="90" x2="210" y2="330" stroke="#3E4C56" stroke-width="1" stroke-dasharray="4 4"/>
+        <!-- load arrows -->
+        <g stroke="#C9781E" stroke-width="2" stroke-linecap="round">
+          <line x1="130" y1="60" x2="130" y2="85"/>
+          <path d="M124 78 L130 88 L136 78"/>
+          <line x1="210" y1="55" x2="210" y2="85"/>
+          <path d="M204 78 L210 88 L216 78"/>
+          <line x1="290" y1="60" x2="290" y2="85"/>
+          <path d="M284 78 L290 88 L296 78"/>
+        </g>
+        <!-- dimension line -->
+        <line x1="70" y1="352" x2="350" y2="352" stroke="#3E4C56" stroke-width="1"/>
+        <line x1="70" y1="346" x2="70" y2="358" stroke="#3E4C56" stroke-width="1"/>
+        <line x1="350" y1="346" x2="350" y2="358" stroke="#3E4C56" stroke-width="1"/>
+        <text x="210" y="373" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="12" fill="#3E4C56">SPAN 24.4m</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">01 — DISCIPLINES</div>
+        <h2 class="section-title">Six disciplines, run<br>from one site file.</h2>
+      </div>
+      <p class="section-note">Every project moves through the same register of drawings and sign-offs regardless of scale — so nothing gets re-explained between site visits, or between us and your contractor.</p>
+    </div>
+
+    <div class="services-grid reveal">
+      <div class="service-item">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 20V6l8-3 8 3v14"/><path d="M4 20h16"/><path d="M9 20v-6h6v6"/><path d="M9 10h6"/></svg>
+        <h3>Structural Engineering</h3>
+        <p>Design and certification of load-bearing systems for buildings and civil works, from raft to roof.</p>
+      </div>
+      <div class="service-item">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 20h18"/><path d="M5 20V9"/><path d="M9 20v-6"/><path d="M13 20V6"/><path d="M17 20v-9"/><path d="M21 20v-4"/></svg>
+        <h3>Geotechnical Investigation</h3>
+        <p>Soil profiling, bearing capacity testing, and foundation recommendations before design begins.</p>
+      </div>
+      <div class="service-item">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M4 14c2-4 4-6 8-6s6 2 8 6"/><path d="M4 18h16"/><circle cx="12" cy="6" r="2"/></svg>
+        <h3>Site Civil &amp; Stormwater</h3>
+        <p>Grading, drainage layout, and stormwater attenuation design for developed and paved sites.</p>
+      </div>
+      <div class="service-item">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h11"/></svg>
+        <h3>Construction Monitoring</h3>
+        <p>On-site inspection and formal sign-off through every structural milestone, not just at handover.</p>
+      </div>
+      <div class="service-item">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 7h18M3 12h18M3 17h11"/></svg>
+        <h3>Project &amp; Contract Admin</h3>
+        <p>Programme, budget, and NEC/JBCC contract administration alongside the engineering scope.</p>
+      </div>
+      <div class="service-item">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="10" cy="10" r="6"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
+        <h3>Due Diligence &amp; Audits</h3>
+        <p>Condition surveys, structural audits, and remedial specifications for existing buildings.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">02 — RECENT WORK</div>
+        <h2 class="section-title">Three sites,<br>three load cases.</h2>
+      </div>
+      <p class="section-note">A cross-section of scale: industrial structure, bulk earthworks and stormwater, and a live bridgeworks contract — each carried from investigation through to sign-off.</p>
+    </div>
+
+    <div class="projects-grid reveal">
+
+      <div class="project-card">
+        <div class="project-art">
+          <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="20" y1="100" x2="180" y2="100" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="30" y1="100" x2="30" y2="55" stroke="currentColor" stroke-width="2"/>
+            <line x1="170" y1="100" x2="170" y2="55" stroke="currentColor" stroke-width="2"/>
+            <line x1="100" y1="100" x2="100" y2="40" stroke="currentColor" stroke-width="2"/>
+            <line x1="30" y1="55" x2="100" y2="40" stroke="currentColor" stroke-width="2"/>
+            <line x1="100" y1="40" x2="170" y2="55" stroke="currentColor" stroke-width="2"/>
+            <line x1="30" y1="55" x2="170" y2="55" stroke="#C9781E" stroke-width="1.5"/>
+            <line x1="55" y1="100" x2="55" y2="65" stroke="currentColor" stroke-width="1"/>
+            <line x1="145" y1="100" x2="145" y2="65" stroke="currentColor" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="project-body">
+          <span class="project-tag">Industrial / Structural</span>
+          <h3>Halyard Logistics Park</h3>
+          <div class="spec-block">
+            <div><span>Clear Span</span><span>42m</span></div>
+            <div><span>Design Load</span><span>15 kN/m²</span></div>
+            <div><span>Status</span><span>Complete — 2023</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-art">
+          <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 90 Q60 70 100 85 T190 80" stroke="currentColor" stroke-width="1" opacity=".5"/>
+            <path d="M10 70 Q60 50 100 65 T190 60" stroke="currentColor" stroke-width="1" opacity=".7"/>
+            <path d="M10 50 Q60 30 100 45 T190 40" stroke="currentColor" stroke-width="1"/>
+            <circle cx="70" cy="55" r="3" fill="#C9781E"/>
+            <circle cx="130" cy="60" r="3" fill="#C9781E"/>
+            <circle cx="160" cy="45" r="3" fill="#C9781E"/>
+          </svg>
+        </div>
+        <div class="project-body">
+          <span class="project-tag">Earthworks / Stormwater</span>
+          <h3>Renfield Residential Estate</h3>
+          <div class="spec-block">
+            <div><span>Site Area</span><span>38 ha</span></div>
+            <div><span>Attenuation</span><span>12,000 m³</span></div>
+            <div><span>Status</span><span>Complete — 2022</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-art">
+          <svg viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="10" y1="55" x2="190" y2="55" stroke="currentColor" stroke-width="2.5"/>
+            <line x1="35" y1="55" x2="35" y2="100" stroke="currentColor" stroke-width="2"/>
+            <line x1="100" y1="55" x2="100" y2="100" stroke="currentColor" stroke-width="2"/>
+            <line x1="165" y1="55" x2="165" y2="100" stroke="currentColor" stroke-width="2"/>
+            <line x1="20" y1="100" x2="50" y2="100" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="85" y1="100" x2="115" y2="100" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="150" y1="100" x2="180" y2="100" stroke="currentColor" stroke-width="1.5"/>
+            <line x1="10" y1="45" x2="190" y2="45" stroke="#C9781E" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="project-body">
+          <span class="project-tag">Structural / Bridgeworks</span>
+          <h3>Port Access Overpass</h3>
+          <div class="spec-block">
+            <div><span>Spans</span><span>3 &times; 24m</span></div>
+            <div><span>Clearance</span><span>5.4m</span></div>
+            <div><span>Status</span><span>In Construction</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">03 — HOW A PROJECT MOVES</div>
+        <h2 class="section-title">Site to sign-off,<br>in five stages.</h2>
+      </div>
+      <p class="section-note">The order is fixed by what the next stage needs from the last — you always know which stage a project is sitting in.</p>
+    </div>
+
+    <div class="process-list reveal">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <div class="step-body"><h3>Site Assessment</h3><p>Walkover, geotechnical investigation, and survey capture — establishing what the ground and the brief actually allow.</p></div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <div class="step-body"><h3>Concept &amp; Modelling</h3><p>Structural analysis and load cases, coordinated directly with the architectural and services teams.</p></div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <div class="step-body"><h3>Documentation &amp; Approval</h3><p>Construction drawings and specifications, taken through council and ECSA sign-off.</p></div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <div class="step-body"><h3>Construction Monitoring</h3><p>Site inspection at every structural milestone, with as-built verification against the design.</p></div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">05</div>
+        <div class="step-body"><h3>Completion &amp; Handover</h3><p>Certificates of compliance, maintenance schedule, and a closed-out project file.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="eyebrow reveal">CREDENTIALS</div>
+    <div class="cred-strip reveal">
+      <div class="cred-item"><span class="cred-label">Registration</span><span class="cred-value">ECSA — Pr Eng</span></div>
+      <div class="cred-item"><span class="cred-label">Quality</span><span class="cred-value">ISO 9001:2015</span></div>
+      <div class="cred-item"><span class="cred-label">Safety Record</span><span class="cred-value">0 LTIs, FY2024</span></div>
+      <div class="cred-item"><span class="cred-label">Practice</span><span class="cred-value">SAICE Member Firm</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head reveal" style="margin-bottom:48px;">
+      <div>
+        <div class="eyebrow">04 — GET IN TOUCH</div>
+        <h2 class="section-title">Send us the site.</h2>
+      </div>
+      <p class="section-note">Share a locality, a scope, or just a soil report — we'll tell you what it takes to build on it, and where the risk actually sits.</p>
+    </div>
+
+    <div class="contact-grid reveal">
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('Demo form — not connected to a backend.');">
+        <input type="text" placeholder="Full name" required>
+        <input type="email" placeholder="Email address" required>
+        <input type="text" placeholder="Project location">
+        <textarea placeholder="Briefly describe the site and scope..." required></textarea>
+        <button type="submit" class="btn btn-primary">Request Assessment</button>
+      </form>
+
+      <div class="title-block">
+        <div class="tb-row">
+          <div class="tb-cell tb-full"><span class="tb-k">Project</span><span class="tb-v">New Enquiry</span></div>
+        </div>
+        <div class="tb-row">
+          <div class="tb-cell"><span class="tb-k">Dwg No.</span><span class="tb-v">CS-ENQ-001</span></div>
+          <div class="tb-cell"><span class="tb-k">Scale</span><span class="tb-v">N.T.S.</span></div>
+        </div>
+        <div class="tb-row">
+          <div class="tb-cell"><span class="tb-k">Date</span><span class="tb-v" id="tbDate">—</span></div>
+          <div class="tb-cell"><span class="tb-k">Rev</span><span class="tb-v">A</span></div>
+        </div>
+        <div class="tb-row">
+          <div class="tb-cell"><span class="tb-k">Drawn</span><span class="tb-v">—</span></div>
+          <div class="tb-cell"><span class="tb-k">Checked</span><span class="tb-v">Pr Eng, ECSA</span></div>
+        </div>
+        <div class="tb-row">
+          <div class="tb-cell tb-full">
+            <span class="tb-k">Office</span>
+            <span class="tb-v">Cape Town, South Africa &nbsp;·&nbsp; +27 21 555 0148 &nbsp;·&nbsp; info@minecore.co.za</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">MINE<span style="color:var(--safety)">CORE</span> ENGINEERING</div>
+        <p>Civil, structural, and geotechnical engineering. ECSA registered practice, established 2007.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Practice</h4>
+        <ul>
+          <li><a href="#services">Disciplines</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#process">Process</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Disciplines</h4>
+        <ul>
+          <li>Structural Engineering</li>
+          <li>Geotechnical</li>
+          <li>Site Civil &amp; Stormwater</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li>Cape Town, South Africa</li>
+          <li>+27 21 555 0148</li>
+          <li>info@minecore.co.za</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-tb">
+      <span class="fcell">Dwg No. <b>CS-SITE-001</b></span>
+      <span class="fcell">Scale <b>N.T.S.</b></span>
+      <span class="fcell">Rev <b>A</b></span>
+      <span class="fcell">Reg. No. <b>ECSA/2007/00481</b></span>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 Mine Core Engineering Civil Engineering (Pty) Ltd. All rights reserved.</span>
+      <span>Registered Professional Engineering Practice — ECSA</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', false);
+  }));
+
+  // date in title block
+  document.getElementById('tbDate').textContent = new Date().toLocaleDateString('en-ZA', { year:'numeric', month:'2-digit', day:'2-digit' });
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>

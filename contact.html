@@ -35,29 +35,146 @@
     <div class="container">
       <div class="label">Contact</div>
       <h1 class="section-title fade-up">Start your <em>project</em></h1>
+
       <div class="order-wrap">
         <div class="order-box fade-up delay-1">
-          <form action="https://formspree.io/f/xzdojyjv" method="POST" target="_self" onsubmit="setTimeout(() => window.location='thankyou.html', 100);">
+          <form id="quoteForm" action="https://formspree.io/f/xzdojyjv" method="POST" target="_self"
+            onsubmit="setTimeout(() => window.location='thankyou.html', 100);">
 
             <input type="text" name="name" placeholder="Full Name" required>
             <input type="email" name="email" placeholder="Email Address" required>
             <input type="text" name="business" placeholder="Business / Brand Name (Optional)">
-
-            <select name="package" required>
-              <option value="">Select Package</option>
-              <option>Basic</option>
-              <option>Standard</option>
-              <option>Premium</option>
-            </select>
-
             <input type="text" name="inspiration" placeholder="Type of business">
 
-            <textarea name="message" rows="6" placeholder="Briefly describe the website you want..."
+            <!-- Package selection -->
+            <div class="field-group">
+              <label class="field-label">Choose a package</label>
+              <div class="package-picker">
+
+                <input type="radio" name="package" id="pkg-mini" value="Mini" class="package-input" required>
+                <label for="pkg-mini" class="package-option">
+                  <span class="package-name">Mini</span>
+                  <span class="package-price">R800</span>
+                  <span class="package-pages">1 page</span>
+                </label>
+
+                <input type="radio" name="package" id="pkg-starter" value="Starter" class="package-input">
+                <label for="pkg-starter" class="package-option">
+                  <span class="package-name">Starter</span>
+                  <span class="package-price">R1,500</span>
+                  <span class="package-pages">1–2 pages</span>
+                </label>
+
+                <input type="radio" name="package" id="pkg-business" value="Business" class="package-input">
+                <label for="pkg-business" class="package-option is-popular">
+                  <span class="package-badge">Most Popular</span>
+                  <span class="package-name">Business</span>
+                  <span class="package-price">R2,500</span>
+                  <span class="package-pages">3–4 pages</span>
+                </label>
+
+                <input type="radio" name="package" id="pkg-premium" value="Premium" class="package-input">
+                <label for="pkg-premium" class="package-option">
+                  <span class="package-name">Premium</span>
+                  <span class="package-price">R4,000</span>
+                  <span class="package-pages">5+ pages</span>
+                </label>
+
+              </div>
+            </div>
+
+            <!-- Extras -->
+            <div class="field-group">
+              <label class="field-label">Add any extras <span class="field-label-note">(optional)</span></label>
+              <div class="extras-picker">
+
+                <label class="extras-option">
+                  <input type="checkbox" name="extras" value="Booking form (R600–R800)" data-min="600">
+                  <span class="extras-check"></span>
+                  <span class="extras-text">
+                    <span class="extras-title">Booking form</span>
+                    <span class="extras-sub">Simple date/time request form</span>
+                  </span>
+                  <span class="extras-cost">R400–600</span>
+                </label>
+
+                <label class="extras-option">
+                  <input type="checkbox" name="extras" value="Booking system with calendar sync (R1,200–R2,000)"
+                    data-min="1200">
+                  <span class="extras-check"></span>
+                  <span class="extras-text">
+                    <span class="extras-title">Calendar-sync booking system</span>
+                    <span class="extras-sub">Live availability, no double-bookings</span>
+                  </span>
+                  <span class="extras-cost">R1,000–2,000</span>
+                </label>
+
+                <label class="extras-option">
+                  <input type="checkbox" name="extras" value="E-commerce, up to 10 products (R1,500–R3,000)"
+                    data-min="1500">
+                  <span class="extras-check"></span>
+                  <span class="extras-text">
+                    <span class="extras-title">E-commerce</span>
+                    <span class="extras-sub">Up to 10 products, checkout & payments</span>
+                  </span>
+                  <span class="extras-cost">R1,000–2,000</span>
+                </label>
+
+                <label class="extras-option">
+                  <input type="checkbox" name="extras" value="Extra page (R400–R600)" data-min="400">
+                  <span class="extras-check"></span>
+                  <span class="extras-text">
+                    <span class="extras-title">Extra page</span>
+                    <span class="extras-sub">Beyond your package's page count</span>
+                  </span>
+                  <span class="extras-cost">R300–600</span>
+                </label>
+
+                <label class="extras-option">
+                  <input type="checkbox" name="extras" value="Blog setup (R500)" data-min="500">
+                  <span class="extras-check"></span>
+                  <span class="extras-text">
+                    <span class="extras-title">Blog setup</span>
+                    <span class="extras-sub">A place to post news & updates</span>
+                  </span>
+                  <span class="extras-cost">R500</span>
+                </label>
+
+                <label class="extras-option">
+                  <input type="checkbox" name="extras" value="Logo design (R400–R600)" data-min="400">
+                  <span class="extras-check"></span>
+                  <span class="extras-text">
+                    <span class="extras-title">Logo design</span>
+                    <span class="extras-sub">A simple custom logo for your brand</span>
+                  </span>
+                  <span class="extras-cost">R200–300</span>
+                </label>
+
+                <label class="extras-option">
+                  <input type="checkbox" name="extras" value="Rush delivery, under 1 week (R500)" data-min="500">
+                  <span class="extras-check"></span>
+                  <span class="extras-text">
+                    <span class="extras-title">Rush delivery</span>
+                    <span class="extras-sub">Ready in under a week</span>
+                  </span>
+                  <span class="extras-cost">R400</span>
+                </label>
+
+              </div>
+            </div>
+
+            <textarea class="mt-4" name="message" rows="5" placeholder="Briefly describe the website you want..."
               required></textarea>
 
-            <p class="form-note">
-              Don't worry about all the details yet — after submitting, we'll contact you to discuss colours, pages,
-              features, branding, and the overall style of your website.
+            <!-- Live estimate -->
+            <div class="estimate-bar">
+              <span class="estimate-label">Estimated starting price</span>
+              <span class="estimate-value" id="estimateValue">R0</span>
+            </div>
+
+            <p class="form-note"
+              This is a rough starting estimate, not a final quote — after submitting, we'll contact you to confirm
+              scope, colours, branding, and the final price.
             </p>
 
             <button type="submit" class="btn btn-gold" style="width:100%;">
@@ -65,6 +182,7 @@
             </button>
           </form>
         </div>
+
         <div class="order-summary fade-up delay-2">
           <h4>What happens next?</h4>
           <p>✔ We review your request</p>
@@ -114,6 +232,41 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    (function () {
+      const packagePrices = { Mini: 800, Starter: 1500, Business: 2500, Premium: 4000 };
+      const form = document.getElementById('quoteForm');
+      const estimateValue = document.getElementById('estimateValue');
+
+      function updateEstimate() {
+        let total = 0;
+        const selectedPkg = form.querySelector('input[name="package"]:checked');
+        if (selectedPkg) total += packagePrices[selectedPkg.value] || 0;
+
+        form.querySelectorAll('input[name="extras"]:checked').forEach(function (box) {
+          total += parseInt(box.dataset.min, 10) || 0;
+        });
+
+        estimateValue.textContent = 'R' + total.toLocaleString();
+      }
+
+      form.addEventListener('change', updateEstimate);
+      updateEstimate();
+    })();
+  </script>
+
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('intent') === 'seo') {
+        const msg = document.querySelector('textarea[name="message"]');
+        if (msg && !msg.value) {
+          msg.value = "I'm interested in an SEO & performance audit for my website.";
+        }
+      }
+    })();
+  </script>
 </body>
 
 </html>
