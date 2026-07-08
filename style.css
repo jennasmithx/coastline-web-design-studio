@@ -194,6 +194,18 @@ section {
   gap: 12px;
 }
 
+@media (max-width: 700px) {
+  .package-picker {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .package-picker {
+    grid-template-columns: 1fr;
+  }
+}
+
 .package-input {
   position: absolute;
   opacity: 0;
