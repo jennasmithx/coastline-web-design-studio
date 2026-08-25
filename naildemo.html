@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo Nail Salon | Luxury Nails & Beauty</title>
+<meta name="description" content="Demo Nail Salon — beautiful nails, thoughtful beauty, and a little luxury.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#292326; --muted:#756b70; --rose:#b86f7f; --rose-dark:#945564;
+  --blush:#f7e9eb; --cream:#fffaf7; --white:#fff; --line:#eadfe0;
+  --shadow:0 18px 55px rgba(61,39,45,.10);
+  --serif:"Cormorant Garamond",serif; --sans:"DM Sans",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);color:var(--ink);background:var(--cream);line-height:1.6}
+a{text-decoration:none;color:inherit}
+button,input,select,textarea{font:inherit}
+img{display:block;width:100%}
+.container{width:min(1160px,92%);margin:auto}
+header{position:fixed;top:0;left:0;width:100%;z-index:20;background:rgba(255,250,247,.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(234,223,224,.7)}
+.nav{height:78px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:var(--serif);font-size:28px;font-weight:600;letter-spacing:.03em}
+.logo span{color:var(--rose)}
+nav{display:flex;gap:31px;align-items:center}
+nav a{font-size:13px;font-weight:600;color:#5d5357;transition:.25s}
+nav a:hover{color:var(--rose)}
+.nav-btn,.btn{display:inline-flex;align-items:center;justify-content:center;border:0;background:var(--ink);color:white;border-radius:999px;padding:13px 23px;font-weight:700;font-size:13px;cursor:pointer;transition:.25s}
+.nav-btn:hover,.btn:hover{background:var(--rose-dark);transform:translateY(-2px)}
+.menu{display:none;background:none;border:0;font-size:26px;cursor:pointer}
+.hero{padding:150px 0 90px;background:linear-gradient(120deg,#fffaf7 20%,#f8e9eb 100%);overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:70px}
+.eyebrow{color:var(--rose-dark);font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;margin-bottom:18px}
+h1{font-family:var(--serif);font-size:clamp(58px,7vw,94px);font-weight:500;line-height:.9;letter-spacing:-.03em;margin-bottom:25px}
+h1 em{font-style:italic;color:var(--rose)}
+.hero p{color:var(--muted);max-width:500px;font-size:16px;margin-bottom:31px}
+.hero-actions{display:flex;gap:12px;align-items:center}
+.btn-light{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);background:white;border-radius:999px;padding:12px 21px;font-size:13px;font-weight:700}
+.hero-photo{position:relative}
+.hero-photo img{height:610px;object-fit:cover;border-radius:190px 190px 18px 18px;box-shadow:var(--shadow)}
+.floating{position:absolute;bottom:25px;left:-35px;background:white;padding:18px 22px;border-radius:18px;box-shadow:var(--shadow);display:flex;align-items:center;gap:12px}
+.stars{color:#b66c7b;letter-spacing:2px}
+.floating small{display:block;color:var(--muted);font-size:10px}
+.floating strong{font-size:13px}
+section{padding:100px 0}
+.section-head{text-align:center;max-width:650px;margin:0 auto 50px}
+.section-head h2{font-family:var(--serif);font-size:55px;font-weight:500;line-height:1;margin-bottom:15px}
+.section-head p{color:var(--muted)}
+.services{background:white}
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.service{padding:31px;background:var(--cream);border:1px solid var(--line);border-radius:20px;transition:.3s}
+.service:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.service-num{font-family:var(--serif);font-size:19px;color:var(--rose);margin-bottom:18px}
+.service h3{font-family:var(--serif);font-size:29px;font-weight:600;margin-bottom:7px}
+.service p{font-size:13px;color:var(--muted);min-height:62px}
+.service-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:23px;padding-top:17px;border-top:1px solid var(--line)}
+.price{font-weight:800}.time{font-size:11px;color:var(--muted)}
+.about{background:#f6e7e9}
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:center}
+.about-img{height:600px;object-fit:cover;border-radius:20px 170px 20px 20px}
+.about-copy h2{font-family:var(--serif);font-size:61px;font-weight:500;line-height:.95;margin-bottom:22px}
+.about-copy p{color:var(--muted);margin-bottom:16px}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:28px 0}
+.check{font-size:13px;font-weight:700;display:flex;gap:9px;align-items:center}
+.check i{font-style:normal;color:var(--rose);font-size:18px}
+.gallery{background:var(--cream)}
+.gallery-grid{display:grid;grid-template-columns:1fr 1.35fr 1fr;grid-template-rows:250px 250px;gap:14px}
+.gallery-grid img{height:100%;object-fit:cover;border-radius:15px}
+.g1{grid-row:span 2}.g2{grid-column:span 1}.g3{grid-row:span 2}.g4{grid-column:span 1}
+.booking{background:var(--ink);color:white}
+.booking-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:center}
+.booking h2{font-family:var(--serif);font-size:63px;font-weight:500;line-height:.95;margin-bottom:20px}
+.booking-copy p{color:#c7bfc1;max-width:450px}
+.contact-points{margin-top:28px;display:grid;gap:15px}
+.contact-points div{font-size:13px;color:#ddd3d5}.contact-points strong{display:block;color:white;margin-bottom:2px}
+.form{background:white;color:var(--ink);padding:32px;border-radius:22px;box-shadow:var(--shadow)}
+.form h3{font-family:var(--serif);font-size:31px;margin-bottom:22px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.field.full{grid-column:1/-1}
+label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:#6f6569}
+input,select,textarea{width:100%;border:1px solid var(--line);border-radius:11px;padding:13px 14px;outline:none;background:#fffaf8;color:var(--ink)}
+input:focus,select:focus,textarea:focus{border-color:var(--rose)}
+textarea{min-height:90px;resize:vertical}
+.form .btn{width:100%;margin-top:4px}
+.form-note{text-align:center;color:var(--muted);font-size:11px;margin-top:11px}
+.reviews{background:white}
+.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.review{border:1px solid var(--line);border-radius:18px;padding:28px;background:var(--cream)}
+.review .stars{font-size:13px;margin-bottom:17px}
+.review p{font-family:var(--serif);font-size:22px;line-height:1.2;margin-bottom:20px}
+.review strong{font-size:12px}
+.cta{padding:85px 0;text-align:center;background:linear-gradient(120deg,#f7e6e9,#fff8f4)}
+.cta h2{font-family:var(--serif);font-size:58px;font-weight:500;line-height:1;margin-bottom:13px}
+.cta p{color:var(--muted);margin-bottom:25px}
+footer{background:#211d1f;color:white;padding:55px 0 25px}
+.footer-top{display:flex;justify-content:space-between;gap:30px;padding-bottom:35px;border-bottom:1px solid #40393c}
+.footer-brand{max-width:310px}.footer-brand .logo{margin-bottom:12px}.footer-brand p{color:#aaa0a3;font-size:13px}
+.footer-links{display:flex;gap:65px}.footer-links h4{font-size:11px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:13px;color:#cfc5c7}.footer-links a{display:block;color:#aaa0a3;font-size:12px;margin:7px 0}
+.copyright{padding-top:22px;color:#81777a;font-size:11px;display:flex;justify-content:space-between}
+.toast{position:fixed;right:22px;bottom:22px;background:var(--ink);color:white;padding:15px 19px;border-radius:13px;box-shadow:var(--shadow);transform:translateY(120px);opacity:0;transition:.3s;z-index:50;font-size:13px}
+.toast.show{transform:translateY(0);opacity:1}
+@media(max-width:850px){
+ nav{display:none;position:absolute;top:78px;left:0;width:100%;background:var(--cream);padding:20px;flex-direction:column;gap:18px;border-bottom:1px solid var(--line)}
+ nav.open{display:flex}.menu{display:block}.nav-btn{display:none}
+ .hero{padding-top:125px}.hero-grid,.about-grid,.booking-grid{grid-template-columns:1fr;gap:45px}
+ .hero-photo img{height:500px}.floating{left:10px}
+ .service-grid,.review-grid{grid-template-columns:1fr}
+ .about-img{height:500px}
+ .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:220px 220px 220px}
+ .g1{grid-row:span 2}.g2{grid-column:span 1}.g3{grid-row:span 2}.g4{grid-column:span 1}
+ .footer-top{flex-direction:column}.footer-links{gap:45px}
+}
+@media(max-width:560px){
+ section{padding:75px 0}.hero{padding-bottom:70px}.hero-photo img{height:430px}
+ h1{font-size:62px}.section-head h2,.about-copy h2,.booking h2{font-size:48px}
+ .gallery-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:180px 180px 180px}
+ .gallery-grid img{border-radius:10px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}
+ .footer-links{display:grid;grid-template-columns:1fr 1fr}.copyright{flex-direction:column;gap:7px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#home" class="logo">Demo <span>Nail Salon</span></a>
+    <nav id="nav">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#booking">Contact</a>
+    </nav>
+    <a class="nav-btn" href="#booking">Book Now</a>
+    <button class="menu" id="menu" aria-label="Open menu">☰</button>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">Nails • Beauty • Self Care</div>
+      <h1>Beautiful nails.<br><em>Beautiful you.</em></h1>
+      <p>Welcome to Demo Nail Salon — your little escape for beautifully crafted nails, relaxing beauty treatments and a touch of everyday luxury.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#booking">Book an appointment</a>
+        <a class="btn-light" href="#services">Explore services</a>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=1000&q=85" alt="Elegant manicure">
+      <div class="floating">
+        <div>
+          <div class="stars">★★★★★</div>
+          <small>Rated by our clients</small>
+        </div>
+        <strong>5.0</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Our services</div>
+      <h2>Little luxuries, made for you.</h2>
+      <p>From your everyday mani to your next special-occasion set, we create nails that make you feel amazing.</p>
+    </div>
+    <div class="service-grid">
+      <article class="service"><div class="service-num">01</div><h3>Gel Manicure</h3><p>A neat, glossy finish with long-lasting colour and cuticle care.</p><div class="service-bottom"><span class="price">R280</span><span class="time">60 min</span></div></article>
+      <article class="service"><div class="service-num">02</div><h3>Gel Extensions</h3><p>Elegant extensions shaped and finished to suit your natural style.</p><div class="service-bottom"><span class="price">R480</span><span class="time">90 min</span></div></article>
+      <article class="service"><div class="service-num">03</div><h3>Acrylic Set</h3><p>Strong, sculpted nails with your choice of colour and shape.</p><div class="service-bottom"><span class="price">R450</span><span class="time">90 min</span></div></article>
+      <article class="service"><div class="service-num">04</div><h3>Nail Art</h3><p>From subtle French details to custom designs made for you.</p><div class="service-bottom"><span class="price">From R80</span><span class="time">+ 20 min</span></div></article>
+      <article class="service"><div class="service-num">05</div><h3>Luxury Pedicure</h3><p>A relaxing treatment with exfoliation, care, polish and hydration.</p><div class="service-bottom"><span class="price">R350</span><span class="time">60 min</span></div></article>
+      <article class="service"><div class="service-num">06</div><h3>Soak Off</h3><p>Gentle removal of gel or acrylic while keeping your natural nails cared for.</p><div class="service-bottom"><span class="price">R100</span><span class="time">30 min</span></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="container about-grid">
+    <img class="about-img" src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&fit=crop&w=1000&q=85" alt="Nail salon treatment">
+    <div class="about-copy">
+      <div class="eyebrow">About the salon</div>
+      <h2>Your self-care starts here.</h2>
+      <p>At Demo Nail Salon, we believe getting your nails done should feel like more than an appointment. It should be time set aside just for you.</p>
+      <p>Our friendly nail artists focus on beautiful detail, comfortable treatments and results you'll want to show off.</p>
+      <div class="checks">
+        <div class="check"><i>✓</i> Experienced nail artists</div>
+        <div class="check"><i>✓</i> Premium products</div>
+        <div class="check"><i>✓</i> Clean & relaxing space</div>
+        <div class="check"><i>✓</i> Personalised designs</div>
+      </div>
+      <a class="btn" href="#booking">Come visit us</a>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Our work</div>
+      <h2>Fresh sets, endless inspiration.</h2>
+      <p>Save your favourite look and bring it to your next appointment.</p>
+    </div>
+    <div class="gallery-grid">
+      <img class="g1" src="https://images.unsplash.com/photo-1632345031435-8727f6897d53?auto=format&fit=crop&w=900&q=85" alt="Pink manicure">
+      <img class="g2" src="https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&w=800&q=85" alt="Nail art">
+      <img class="g3" src="https://images.unsplash.com/photo-1607779097040-26e80aa78e66?auto=format&fit=crop&w=900&q=85" alt="Elegant nails">
+      <img class="g4" src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?auto=format&fit=crop&w=800&q=85" alt="Manicure detail">
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Client love</div>
+      <h2>Don't just take our word for it.</h2>
+    </div>
+    <div class="review-grid">
+      <article class="review"><div class="stars">★★★★★</div><p>“The prettiest set I've ever had. The salon is gorgeous and my nails lasted perfectly.”</p><strong>— Sarah M.</strong></article>
+      <article class="review"><div class="stars">★★★★★</div><p>“Such a relaxing experience. I showed them a photo and they recreated it exactly.”</p><strong>— Mia K.</strong></article>
+      <article class="review"><div class="stars">★★★★★</div><p>“The attention to detail is unmatched. I already booked my next appointment!”</p><strong>— Olivia R.</strong></article>
+    </div>
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <div class="container booking-grid">
+    <div class="booking-copy">
+      <div class="eyebrow">Let's get you booked</div>
+      <h2>Ready for your next set?</h2>
+      <p>Choose your service and preferred date below. This demo form gives your future clients a simple way to request an appointment.</p>
+      <div class="contact-points">
+        <div><strong>Visit us</strong>123 Main Street, Your City</div>
+        <div><strong>Opening hours</strong>Mon–Fri 09:00–17:30 • Sat 09:00–15:00</div>
+        <div><strong>Contact</strong>+27 72 123 4567 • hello@demonailsalon.co.za</div>
+      </div>
+    </div>
+    <form class="form" id="bookingForm">
+      <h3>Request an appointment</h3>
+      <div class="form-grid">
+        <div class="field"><label>Full name</label><input required type="text" placeholder="Your name"></div>
+        <div class="field"><label>Phone</label><input required type="tel" placeholder="+27 ..."></div>
+        <div class="field"><label>Service</label><select required><option value="">Choose a service</option><option>Gel Manicure — R280</option><option>Gel Extensions — R480</option><option>Acrylic Set — R450</option><option>Nail Art — From R80</option><option>Luxury Pedicure — R350</option><option>Soak Off — R100</option></select></div>
+        <div class="field"><label>Preferred date</label><input required type="date"></div>
+        <div class="field"><label>Preferred time</label><select required><option value="">Select a time</option><option>09:00</option><option>10:30</option><option>12:00</option><option>13:30</option><option>15:00</option><option>16:30</option></select></div>
+        <div class="field"><label>Instagram (optional)</label><input type="text" placeholder="@username"></div>
+        <div class="field full"><label>Anything else?</label><textarea placeholder="Tell us about your nail inspiration..."></textarea></div>
+      </div>
+      <button class="btn" type="submit">Request booking</button>
+      <div class="form-note">Demo only — no booking will actually be submitted.</div>
+    </form>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <div class="eyebrow">Your next favourite salon</div>
+    <h2>Pretty nails. Happy you.</h2>
+    <p>Because you deserve a little time for yourself.</p>
+    <a class="btn" href="#booking">Book your appointment</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">Demo <span>Nail Salon</span></div>
+        <p>A modern nail salon demo website designed to showcase a premium beauty brand.</p>
+      </div>
+      <div class="footer-links">
+        <div><h4>Explore</h4><a href="#services">Services</a><a href="#gallery">Gallery</a><a href="#about">About</a></div>
+        <div><h4>Connect</h4><a href="#booking">Book appointment</a><a href="#">Instagram</a><a href="#">WhatsApp</a></div>
+      </div>
+    </div>
+    <div class="copyright"><span>© 2026 Demo Nail Salon. Demo website.</span><span>Made with care ✦</span></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast">✨ Your demo booking request has been received!</div>
+
+<script>
+const menu=document.getElementById('menu');
+const nav=document.getElementById('nav');
+menu.addEventListener('click',()=>nav.classList.toggle('open'));
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+
+const form=document.getElementById('bookingForm');
+const toast=document.getElementById('toast');
+form.addEventListener('submit',e=>{
+  e.preventDefault();
+  toast.classList.add('show');
+  form.reset();
+  setTimeout(()=>toast.classList.remove('show'),4000);
+});
+
+const dateInput=form.querySelector('input[type="date"]');
+const today=new Date();
+dateInput.min=new Date(today.getTime()-today.getTimezoneOffset()*60000).toISOString().split('T')[0];
+</script>
+</body>
+</html>
