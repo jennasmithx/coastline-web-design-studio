@@ -54,17 +54,10 @@
               <label class="field-label">Choose a package <span class="field-label-note">(optional)</span></label>
               <div class="package-picker">
 
-                <input type="radio" name="package" id="pkg-mini" value="Mini" class="package-input">
-                <label for="pkg-mini" class="package-option">
-                  <span class="package-name">Mini</span>
-                  <span class="package-price">R800</span>
-                  <span class="package-pages">1 page</span>
-                </label>
-
                 <input type="radio" name="package" id="pkg-starter" value="Starter" class="package-input">
                 <label for="pkg-starter" class="package-option">
                   <span class="package-name">Starter</span>
-                  <span class="package-price">R1,500</span>
+                  <span class="package-price">R400–700</span>
                   <span class="package-pages">1–2 pages</span>
                 </label>
 
@@ -72,18 +65,22 @@
                 <label for="pkg-business" class="package-option is-popular">
                   <span class="package-badge">Most Popular</span>
                   <span class="package-name">Business</span>
-                  <span class="package-price">R2,500</span>
+                  <span class="package-price">R800–1,400</span>
                   <span class="package-pages">3–4 pages</span>
                 </label>
 
                 <input type="radio" name="package" id="pkg-premium" value="Premium" class="package-input">
                 <label for="pkg-premium" class="package-option">
                   <span class="package-name">Premium</span>
-                  <span class="package-price">R4,000</span>
+                  <span class="package-price">From R1,500</span>
                   <span class="package-pages">5+ pages</span>
                 </label>
 
               </div>
+              <p class="form-note" style="margin-top:8px;">
+                Final price depends on complexity — a very simple 4-page site could land near the bottom of the
+                Business range, for example.
+              </p>
             </div>
 
             <!-- Extras -->
@@ -92,75 +89,64 @@
               <div class="extras-picker">
 
                 <label class="extras-option">
-                  <input type="checkbox" name="extras" value="Booking form (R600–R800)" data-min="600">
+                  <input type="checkbox" name="extras" value="Simple booking form (R200–R700)" data-min="200">
                   <span class="extras-check"></span>
                   <span class="extras-text">
                     <span class="extras-title">Booking form</span>
                     <span class="extras-sub">Simple date/time request form</span>
                   </span>
-                  <span class="extras-cost">R400–600</span>
+                  <span class="extras-cost">R200–700</span>
                 </label>
 
                 <label class="extras-option">
-                  <input type="checkbox" name="extras" value="Booking system with calendar sync (R1,200–R2,000)"
-                    data-min="1200">
+                  <input type="checkbox" name="extras" value="Full calendar booking system (from R800)"
+                    data-min="800">
                   <span class="extras-check"></span>
                   <span class="extras-text">
                     <span class="extras-title">Calendar-sync booking system</span>
                     <span class="extras-sub">Live availability, no double-bookings</span>
                   </span>
-                  <span class="extras-cost">R1,000–2,000</span>
+                  <span class="extras-cost">From R800</span>
                 </label>
 
                 <label class="extras-option">
-                  <input type="checkbox" name="extras" value="E-commerce, up to 10 products (R1,500–R3,000)"
-                    data-min="1500">
+                  <input type="checkbox" name="extras" value="E-commerce (from R600)" data-min="600">
                   <span class="extras-check"></span>
                   <span class="extras-text">
                     <span class="extras-title">E-commerce</span>
-                    <span class="extras-sub">Up to 10 products, checkout & payments</span>
+                    <span class="extras-sub">Product listings, checkout & payments</span>
                   </span>
-                  <span class="extras-cost">R1,000–2,000</span>
+                  <span class="extras-cost">From R500</span>
                 </label>
 
                 <label class="extras-option">
-                  <input type="checkbox" name="extras" value="Extra page (R400–R600)" data-min="400">
+                  <input type="checkbox" name="extras" value="Extra page (R200–R400)" data-min="200">
                   <span class="extras-check"></span>
                   <span class="extras-text">
                     <span class="extras-title">Extra page</span>
                     <span class="extras-sub">Beyond your package's page count</span>
                   </span>
-                  <span class="extras-cost">R300–600</span>
+                  <span class="extras-cost">R200–400</span>
                 </label>
 
                 <label class="extras-option">
-                  <input type="checkbox" name="extras" value="Blog setup (R500)" data-min="500">
+                  <input type="checkbox" name="extras" value="Blog setup (R300)" data-min="300">
                   <span class="extras-check"></span>
                   <span class="extras-text">
                     <span class="extras-title">Blog setup</span>
                     <span class="extras-sub">A place to post news & updates</span>
                   </span>
-                  <span class="extras-cost">R500</span>
+                  <span class="extras-cost">R300</span>
                 </label>
 
                 <label class="extras-option">
-                  <input type="checkbox" name="extras" value="Logo design (R400–R600)" data-min="400">
+                  <input type="checkbox" name="extras" value="Logo design (R100)" data-min="100">
                   <span class="extras-check"></span>
                   <span class="extras-text">
                     <span class="extras-title">Logo design</span>
                     <span class="extras-sub">A simple custom logo for your brand</span>
                   </span>
-                  <span class="extras-cost">R200–300</span>
-                </label>
-
-                <label class="extras-option">
-                  <input type="checkbox" name="extras" value="Rush delivery, under 1 week (R500)" data-min="500">
-                  <span class="extras-check"></span>
-                  <span class="extras-text">
-                    <span class="extras-title">Rush delivery</span>
-                    <span class="extras-sub">Ready in under a week</span>
-                  </span>
-                  <span class="extras-cost">R400</span>
+                  <span class="extras-cost">R100</span>
                 </label>
 
               </div>
@@ -235,7 +221,7 @@
 
   <script>
     (function () {
-      const packagePrices = { Mini: 800, Starter: 1500, Business: 2500, Premium: 4000 };
+      const packagePrices = { Starter: 400, Business: 900, Premium: 1500 };
       const form = document.getElementById('quoteForm');
       const estimateValue = document.getElementById('estimateValue');
 
@@ -250,7 +236,7 @@
           total += parseInt(box.dataset.min, 10) || 0;
         });
 
-        estimateValue.textContent = total > 0 ? 'R' + total.toLocaleString() : 'Custom quote';
+        estimateValue.textContent = total > 0 ? 'From R' + total.toLocaleString() : 'Custom quote';
       }
 
       form.addEventListener('change', updateEstimate);
