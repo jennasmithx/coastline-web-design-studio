@@ -1,0 +1,892 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pretty Claws Pty Ltd | Nail Studio</title>
+<meta name="description" content="Pretty Claws Pty Ltd — beautiful nails, bold sets and elegant nail art.">
+
+<style>
+:root{
+  --bg:#0b090c;
+  --card:#171419;
+  --text:#fff9ff;
+  --muted:#bdb3bd;
+  --pink:#ff62b6;
+  --pink2:#f5a1d2;
+  --purple:#8b4bc1;
+  --line:rgba(255,255,255,.10);
+}
+
+*{box-sizing:border-box}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+.container{
+  width:min(1120px,92%);
+  margin:auto;
+}
+
+/* NAVBAR */
+
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:10;
+  background:rgba(11,9,12,.72);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.nav{
+  height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.brand{
+  font-weight:800;
+  letter-spacing:-.03em;
+  font-size:1.15rem;
+}
+
+.brand span{
+  color:var(--pink);
+}
+
+.navlinks{
+  display:flex;
+  gap:28px;
+  color:#d9d0d8;
+  font-size:.94rem;
+}
+
+.navlinks a:hover{
+  color:#fff;
+}
+
+/* BUTTONS */
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:13px 20px;
+  border-radius:999px;
+  background:linear-gradient(135deg,var(--pink),#b74cff);
+  font-weight:800;
+  box-shadow:0 10px 30px rgba(245,86,175,.25);
+  transition:.2s transform,.2s box-shadow;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 14px 35px rgba(245,86,175,.35);
+}
+
+.btn.alt{
+  background:transparent;
+  border:1px solid var(--line);
+  box-shadow:none;
+}
+
+/* HERO */
+
+.hero{
+  padding:145px 0 80px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg,rgba(10,7,12,.10),var(--bg) 82%),
+    url("assets/hero.jpg") center top/cover no-repeat;
+  opacity:.9;
+  z-index:-2;
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(218,96,213,.35),
+      transparent 35%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(11,9,12,.35),
+      rgba(11,9,12,.05),
+      rgba(11,9,12,.45)
+    );
+  z-index:-1;
+}
+
+.hero-grid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:55px;
+  align-items:center;
+}
+
+.kicker{
+  text-transform:uppercase;
+  letter-spacing:.22em;
+  color:#f0a7d2;
+  font-weight:800;
+  font-size:.78rem;
+}
+
+h1{
+  font-size:clamp(3.1rem,7vw,6.3rem);
+  line-height:.92;
+  letter-spacing:-.065em;
+  margin:15px 0 22px;
+}
+
+h1 em{
+  font-style:normal;
+  color:#ff83c4;
+}
+
+.lead{
+  font-size:1.1rem;
+  line-height:1.7;
+  color:#ddd3dc;
+  max-width:590px;
+}
+
+.actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:28px;
+}
+
+.profile{
+  display:flex;
+  justify-content:center;
+}
+
+.profile-card{
+  width:min(370px,90vw);
+  padding:12px;
+  border-radius:34px;
+  background:rgba(20,16,22,.72);
+  border:1px solid rgba(255,255,255,.13);
+  box-shadow:0 30px 90px rgba(0,0,0,.45);
+  transform:rotate(2deg);
+}
+
+.profile-card img{
+  width:100%;
+  display:block;
+  border-radius:24px;
+}
+
+/* SECTIONS */
+
+section{
+  padding:90px 0;
+}
+
+.section-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:20px;
+  margin-bottom:32px;
+}
+
+.eyebrow{
+  color:var(--pink2);
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  font-size:.75rem;
+}
+
+h2{
+  font-size:clamp(2rem,4vw,3.4rem);
+  letter-spacing:-.05em;
+  margin:8px 0 0;
+}
+
+.section-head p{
+  max-width:500px;
+  color:var(--muted);
+  line-height:1.6;
+}
+
+/* SERVICES */
+
+.services{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.service{
+  padding:14px 14px 24px;
+  border:1px solid var(--line);
+  background:linear-gradient(145deg,#1b171c,#121014);
+  border-radius:26px;
+  overflow:hidden;
+}
+
+.service-img{
+  width:100%;
+  aspect-ratio:1.15;
+  object-fit:cover;
+  border-radius:18px;
+  margin-bottom:20px;
+  display:block;
+}
+
+.service .icon,
+.service h3,
+.service p,
+.service .price{
+  margin-left:13px;
+  margin-right:13px;
+}
+
+.icon{
+  width:46px;
+  height:46px;
+  border-radius:15px;
+  display:grid;
+  place-items:center;
+  background:rgba(255,98,182,.13);
+  color:#ff8ec9;
+  font-size:1.3rem;
+  margin-bottom:20px;
+}
+
+.service h3{
+  margin:0 0 9px;
+  font-size:1.2rem;
+}
+
+.service p{
+  margin:0;
+  color:var(--muted);
+  line-height:1.55;
+}
+
+.price{
+  margin-top:17px;
+  color:#ff8ec9;
+  font-weight:800;
+  font-size:.92rem;
+}
+
+/* GALLERY */
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.gallery img{
+  width:100%;
+  aspect-ratio:1.18;
+  object-fit:cover;
+  border-radius:25px;
+  border:1px solid var(--line);
+  transition:.25s transform,.25s filter;
+}
+
+.gallery img:hover{
+  transform:scale(1.025);
+  filter:saturate(1.08);
+}
+
+/* ABOUT */
+
+.about{
+  display:grid;
+  grid-template-columns:.85fr 1.15fr;
+  gap:55px;
+  align-items:center;
+}
+
+.about-card{
+  padding:38px;
+  border-radius:32px;
+  background:linear-gradient(145deg,#241827,#151116);
+  border:1px solid var(--line);
+}
+
+.quote{
+  font-size:1.7rem;
+  line-height:1.3;
+  font-weight:750;
+  letter-spacing:-.03em;
+}
+
+.about-copy{
+  color:var(--muted);
+  line-height:1.8;
+}
+
+/* CONTACT */
+
+.contact{
+  background:linear-gradient(135deg,#251529,#130f15);
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.contact-box{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:35px;
+  align-items:center;
+}
+
+.contact-details{
+  display:grid;
+  gap:12px;
+  margin-top:25px;
+}
+
+.detail{
+  padding:17px 19px;
+  border:1px solid var(--line);
+  border-radius:18px;
+  background:rgba(255,255,255,.035);
+}
+
+.detail small{
+  display:block;
+  color:#a99fa8;
+  margin-bottom:4px;
+}
+
+/* FOOTER */
+
+footer{
+  padding:35px 0;
+  color:#8f858e;
+  font-size:.9rem;
+}
+
+.footer-row{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+  .navlinks{
+    display:none;
+  }
+
+  .hero{
+    padding-top:120px;
+  }
+
+  .hero-grid,
+  .about,
+  .contact-box{
+    grid-template-columns:1fr;
+  }
+
+  .profile{
+    order:-1;
+  }
+
+  .profile-card{
+    width:min(330px,85vw);
+  }
+
+  .services{
+    grid-template-columns:1fr;
+  }
+
+  .gallery{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .section-head{
+    display:block;
+  }
+
+  .section-head p{
+    margin-top:12px;
+  }
+
+  .footer-row{
+    display:block;
+  }
+}
+
+@media(max-width:500px){
+
+  h1{
+    font-size:3.35rem;
+  }
+
+  .gallery{
+    gap:10px;
+  }
+
+  .gallery img{
+    border-radius:17px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a class="brand" href="#top">
+      Pretty <span>Claws</span>
+    </a>
+
+    <nav class="navlinks">
+      <a href="#services">Services</a>
+      <a href="#prices">Prices</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <a class="btn" href="tel:+27679425376">
+      Book Now
+    </a>
+
+  </div>
+</header>
+
+
+<main id="top">
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="container hero-grid">
+
+    <div>
+
+      <div class="kicker">
+        Pretty Claws Pty Ltd
+      </div>
+
+      <h1>
+        Your nails.<br>
+        <em>Your statement.</em>
+      </h1>
+
+      <p class="lead">
+        Beautiful nail sets, creative nail art and polished looks
+        made to turn heads. Discover your next set with Pretty Claws.
+      </p>
+
+      <div class="actions">
+
+        <a class="btn" href="tel:+27679425376">
+          Book an Appointment
+        </a>
+
+        <a class="btn alt" href="#gallery">
+          View Our Work
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="profile">
+
+      <div class="profile-card">
+
+        <img
+          src="assets/brand.jpg"
+          alt="Pretty Claws nail studio branding"
+        >
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section id="services">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+
+        <div class="eyebrow">
+          What we do
+        </div>
+
+        <h2>
+          Made for every mood.
+        </h2>
+
+      </div>
+
+      <p>
+        From soft and classy to long, bold and extra —
+        choose the style that feels like you.
+      </p>
+
+    </div>
+
+
+    <div class="services">
+
+      <article class="service">
+
+        <img
+          class="service-img"
+          src="assets/nails-2.jpg"
+          alt="Long pink nail set example"
+        >
+
+        <div class="icon">✦</div>
+
+        <h3>
+          Signature Sets
+        </h3>
+
+        <p>
+          Fresh, polished nail sets designed around
+          your personal style.
+        </p>
+
+        <div class="price">
+          Price on enquiry
+        </div>
+
+      </article>
+
+
+      <article class="service">
+
+        <img
+          class="service-img"
+          src="assets/nails-4.jpg"
+          alt="Detailed nail art example"
+        >
+
+        <div class="icon">♡</div>
+
+        <h3>
+          Nail Art
+        </h3>
+
+        <p>
+          Statement details, colour, shapes and creative
+          finishes for a custom look.
+        </p>
+
+        <div class="price">
+          Price on enquiry
+        </div>
+
+      </article>
+
+
+      <article class="service">
+
+        <img
+          class="service-img"
+          src="assets/nails-5.jpg"
+          alt="Red luxury nail set example"
+        >
+
+        <div class="icon">✧</div>
+
+        <h3>
+          Luxury Finishes
+        </h3>
+
+        <p>
+          Elegant, glossy finishes that take your nails
+          from pretty to unforgettable.
+        </p>
+
+        <div class="price">
+          Price on enquiry
+        </div>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PRICES -->
+
+<section id="prices">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+
+        <div class="eyebrow">
+          Prices & examples
+        </div>
+
+        <h2>
+          Pick your vibe.
+        </h2>
+
+      </div>
+
+      <p>
+        See an example of each style before you book.
+        Actual pricing can be added once the studio's
+        price list is provided.
+      </p>
+
+    </div>
+
+
+    <div class="gallery">
+
+      <img
+        src="assets/nails-1.jpg"
+        alt="Pink and white nail set example"
+      >
+
+      <img
+        src="assets/nails-3.jpg"
+        alt="Long nude nail set example"
+      >
+
+      <img
+        src="assets/nails-6.jpg"
+        alt="Bright pink nail set example"
+      >
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- GALLERY -->
+
+<section id="gallery">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+
+        <div class="eyebrow">
+          The gallery
+        </div>
+
+        <h2>
+          Pretty Claws in action.
+        </h2>
+
+      </div>
+
+      <p>
+        A selection of the nail looks featured
+        in the studio catalogue.
+      </p>
+
+    </div>
+
+
+    <div class="gallery">
+
+      <img src="assets/nails-1.jpg" alt="Pink and white nail art">
+
+      <img src="assets/nails-2.jpg" alt="Long pink nail set">
+
+      <img src="assets/nails-3.jpg" alt="Long nude nail set">
+
+      <img src="assets/nails-4.jpg" alt="Detailed nail art">
+
+      <img src="assets/nails-5.jpg" alt="Red statement nails">
+
+      <img src="assets/nails-6.jpg" alt="Bright pink nail set">
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+  <div class="container about">
+
+    <div class="about-card">
+
+      <div class="eyebrow">
+        Pretty Claws
+      </div>
+
+      <div class="quote">
+        “Come for the nails. Leave feeling like THAT girl.”
+      </div>
+
+    </div>
+
+
+    <div>
+
+      <div class="eyebrow">
+        About the studio
+      </div>
+
+      <h2>
+        Bold nails. Pretty details. You.
+      </h2>
+
+      <p class="about-copy">
+        Pretty Claws Pty Ltd is all about giving you nails
+        that match your personality — whether that means
+        a soft everyday set or a full-on statement look.
+        Browse the gallery, pick your vibe and get in touch to book.
+      </p>
+
+      <a class="btn" href="tel:+27679425376">
+        Call +27 67 942 5376
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact" class="contact">
+
+  <div class="container contact-box">
+
+    <div>
+
+      <div class="eyebrow">
+        Ready for your next set?
+      </div>
+
+      <h2>
+        Let's make your nails the main character.
+      </h2>
+
+      <p class="lead">
+        Contact Pretty Claws Pty Ltd to enquire
+        about appointments and availability.
+      </p>
+
+    </div>
+
+
+    <div class="contact-details">
+
+      <a class="detail" href="tel:+27679425376">
+
+        <small>
+          Phone
+        </small>
+
+        +27 67 942 5376
+
+      </a>
+
+
+      <a
+        class="detail"
+        href="https://wa.me/27679425376"
+        target="_blank"
+        rel="noopener"
+      >
+
+        <small>
+          WhatsApp
+        </small>
+
+        Chat with Pretty Claws
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+  <div class="container footer-row">
+
+    <div>
+      © 2026 Pretty Claws Pty Ltd
+    </div>
+
+    <div>
+      Beautiful nails. Beautiful you.
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
