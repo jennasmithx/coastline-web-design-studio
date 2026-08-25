@@ -933,10 +933,9 @@ footer {
 
 /* ─── PROJECTS ─── */
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
 .project-card {
@@ -946,6 +945,15 @@ footer {
   overflow: hidden;
   position: relative;
   transition: all .3s ease;
+}
+
+.project-card:not(:last-child)::after {
+  content: "";
+  display: block;
+  width: 70%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.25);
+  margin: 35px auto 0;
 }
 
 .project-card img {
