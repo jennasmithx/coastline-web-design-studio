@@ -1,223 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LuxeGlow Salon</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap"
-    rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      scroll-behavior: smooth;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DEMO — Hair &amp; Nail Atelier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#100c10;
+    --ink-2:#1c1620;
+    --ink-3:#26101a;
+    --ivory:#f3ede6;
+    --lacquer:#7a1030;
+    --lacquer-light:#c24a68;
+    --grey:#a89ea5;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--ink); color:var(--ivory); font-family:'Outfit',sans-serif; font-weight:300; line-height:1.75;}
+  h1,h2,h3,.display{font-family:'Cormorant Garamond',serif; font-weight:500; line-height:1.08; letter-spacing:0.005em;}
+  a{text-decoration:none; color:inherit;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 40px;}
+  .rule{width:6px; height:6px; border-radius:1px; background:var(--lacquer-light); transform:rotate(45deg);}
+  ::selection{background:var(--lacquer-light); color:var(--ink);}
 
-    .brand-font {
-      font-family: 'Playfair Display', serif;
-      letter-spacing: 1px;
-    }
+  .demo-badge{
+    position:fixed; top:18px; right:18px; z-index:999;
+    border:1px solid var(--lacquer-light); color:var(--lacquer-light); font-family:'Cormorant Garamond',serif;
+    font-size:13px; letter-spacing:0.16em; padding:7px 16px; text-transform:uppercase;
+    background:rgba(16,12,16,0.75); backdrop-filter:blur(6px);
+  }
 
-    .hero {
-      background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
-        url('https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-      min-height: 90vh;
-      display: flex;
-      align-items: center;
-      color: #fff;
-    }
+  nav{position:fixed; top:0; left:0; right:0; z-index:100; background:rgba(16,12,16,0.85); backdrop-filter:blur(10px); border-bottom:1px solid rgba(194,74,104,0.2);}
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:96px;}
+  .logo{font-family:'Cormorant Garamond',serif; font-size:27px; letter-spacing:0.16em; text-transform:uppercase; color:var(--ivory);}
+  .nav-links{display:flex; gap:42px; font-size:12.5px; letter-spacing:0.1em; text-transform:uppercase; color:var(--grey);}
+  .nav-links a{transition:color .25s;}
+  .nav-links a:hover{color:var(--lacquer-light);}
+  .nav-cta{border:1px solid var(--lacquer-light); color:var(--lacquer-light); padding:12px 28px; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; transition:all .25s;}
+  .nav-cta:hover{background:var(--lacquer); color:var(--ivory); border-color:var(--lacquer);}
+  @media(max-width:880px){.nav-links{display:none;}}
 
-    .glass {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(6px);
-      border-radius: 16px;
-      padding: 2rem;
-    }
+  /* HERO — lacquer flight, signature element, unmistakably nails */
+  .hero{min-height:100vh; display:flex; align-items:center; padding-top:96px; position:relative; overflow:hidden;}
+  .hero .wrap{display:grid; grid-template-columns:1fr 0.8fr; gap:70px; align-items:center;}
+  .eyebrow{color:var(--lacquer-light); font-size:12px; letter-spacing:0.22em; text-transform:uppercase; margin-bottom:24px; display:flex; align-items:center; gap:14px;}
+  .hero h1{font-size:clamp(46px,6vw,86px); color:var(--ivory); margin-bottom:26px;}
+  .hero h1 em{font-style:italic; color:var(--lacquer-light);}
+  .hero p{max-width:420px; color:var(--grey); font-size:16.5px; margin-bottom:38px;}
+  .btn{display:inline-block; padding:16px 34px; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; transition:all .25s;}
+  .btn-primary{background:var(--lacquer); color:var(--ivory); font-weight:500;}
+  .btn-primary:hover{background:var(--lacquer-light); color:var(--ink);}
+  .btn-outline{border:1px solid rgba(243,237,230,0.35); color:var(--ivory); margin-left:14px;}
+  .btn-outline:hover{border-color:var(--lacquer-light); color:var(--lacquer-light);}
 
-    .section-padding {
-      padding: 80px 0;
-    }
+  .lacquer-flight{display:flex; align-items:flex-end; justify-content:center; gap:20px; height:440px;}
+  .bottle{
+    width:64px; border-radius:16px 16px 6px 6px; position:relative;
+    box-shadow:0 20px 40px rgba(0,0,0,0.5), inset -8px 0 16px rgba(0,0,0,0.25), inset 6px 0 14px rgba(255,255,255,0.08);
+  }
+  .bottle::before{
+    content:''; position:absolute; top:-20px; left:50%; transform:translateX(-50%);
+    width:24px; height:22px; background:linear-gradient(180deg,#3a3a3a,#151515); border-radius:4px 4px 2px 2px;
+  }
+  .bottle::after{
+    content:''; position:absolute; top:0; left:8px; right:30%; bottom:0; border-radius:14px 4px 4px 4px;
+    background:linear-gradient(120deg, rgba(255,255,255,0.22), transparent 55%);
+  }
+  .b1{height:220px; background:linear-gradient(165deg,#a3355a,#5c0e28);}
+  .b2{height:320px; background:linear-gradient(165deg,#c24a68,#7a1030);}
+  .b3{height:260px; background:linear-gradient(165deg,#4a1120,#100c10);}
+  .b4{height:190px; background:linear-gradient(165deg,#8c2a45,#3a0d1c);}
+  .flight-cap{position:absolute; bottom:26px; text-align:center; width:100%; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:19px; color:var(--lacquer-light);}
+  .hero .wrap > div:last-child{position:relative;}
 
-    .service-card img {
-      height: 220px;
-      object-fit: cover;
-      border-radius: 12px;
-    }
+  section{padding:130px 0;}
+  .section-head{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:64px; gap:20px; flex-wrap:wrap; border-bottom:1px solid rgba(194,74,104,0.25); padding-bottom:36px;}
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{font-size:clamp(32px,4.2vw,50px); color:var(--ivory);}
+  .section-head p{color:var(--grey); max-width:300px; font-size:14.5px;}
 
-    .price-card {
-      border: none;
-      border-radius: 18px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      transition: transform .25s ease;
-    }
+  /* THE ATELIER — two disciplines, hair & nail, side by side */
+  .atelier-grid{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(194,74,104,0.2);}
+  .atelier-panel{background:var(--ink); padding:56px 44px;}
+  .atelier-panel .roman{font-family:'Cormorant Garamond',serif; font-style:italic; color:var(--lacquer-light); font-size:16px; margin-bottom:20px;}
+  .atelier-panel h3{font-size:36px; color:var(--ivory); margin-bottom:18px;}
+  .atelier-panel p{color:var(--grey); font-size:15px; margin-bottom:26px;}
+  .atelier-panel .services{list-style:none;}
+  .atelier-panel .services li{
+    display:flex; align-items:center; gap:12px; padding:13px 0; border-top:1px solid rgba(194,74,104,0.18); font-size:14.5px; color:var(--ivory);
+  }
+  .atelier-panel .services li .chip{width:11px; height:15px; border-radius:6px 6px 3px 3px; flex-shrink:0;}
+  .atelier-panel .services li .name{flex:1;}
+  .atelier-panel .services li .price{color:var(--lacquer-light); font-family:'Cormorant Garamond',serif; font-size:16px;}
+  @media(max-width:880px){.atelier-grid{grid-template-columns:1fr;}}
 
-    .price-card:hover {
-      transform: translateY(-8px);
-    }
+  /* GALLERY */
+  .gallery{background:var(--ink-2);}
+  .gallery .section-head{border-bottom-color:rgba(194,74,104,0.25);}
+  .gallery-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(194,74,104,0.15);}
+  .gallery-card{
+    aspect-ratio:3/4; background:var(--ink-2); position:relative; display:flex; align-items:flex-end; padding:22px;
+  }
+  .gallery-card .tag{font-family:'Cormorant Garamond',serif; font-style:italic; font-size:16px; color:var(--lacquer-light);}
+  @media(max-width:880px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
 
-    .bg-soft {
-      background: #faf7f5;
-    }
+  /* ARTISTS */
+  .artists-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:36px;}
+  .artist-photo{aspect-ratio:4/5; margin-bottom:22px; border-radius:6px; border:1px solid rgba(194,74,104,0.3); background:radial-gradient(circle at 30% 25%, rgba(194,74,104,0.2), transparent 60%), linear-gradient(165deg,var(--ink-3),var(--ink)); display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:46px; color:rgba(194,74,104,0.5);}
+  .artist h4{font-size:25px; color:var(--ivory); margin-bottom:4px;}
+  .artist .role{color:var(--lacquer-light); font-size:12px; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:10px;}
+  .artist p{color:var(--grey); font-size:14px;}
+  @media(max-width:880px){.artists-grid{grid-template-columns:1fr;}}
 
-    footer {
-      background: #111;
-      color: #bbb;
-    }
+  /* CTA */
+  .cta-band{text-align:center; padding:150px 32px; position:relative; overflow:hidden; background:var(--ink-3);}
+  .cta-band::before{content:''; position:absolute; inset:0; background:radial-gradient(ellipse at 50% 0%, rgba(194,74,104,0.2), transparent 60%);}
+  .cta-band .content{position:relative; z-index:2;}
+  .cta-band h2{font-size:clamp(38px,5.4vw,62px); margin-bottom:20px; color:var(--ivory);}
+  .cta-band h2 em{font-style:italic; color:var(--lacquer-light);}
+  .cta-band p{color:var(--grey); margin-bottom:36px;}
 
-    footer a {
-      color: #fff;
-      text-decoration: none;
-    }
-  </style>
+  footer{padding:56px 32px; text-align:center; color:var(--grey); font-size:13px; border-top:1px solid rgba(194,74,104,0.2);}
+  footer .logo{justify-content:center; display:flex; margin-bottom:16px; font-size:21px; color:var(--ivory);}
+
+  .fade-up{opacity:0; transform:translateY(24px); transition:opacity .8s ease, transform .8s ease;}
+  .fade-up.in{opacity:1; transform:translateY(0);}
+</style>
 </head>
-
 <body>
 
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand brand-font" href="#home">LuxeGlow</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navMenu">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+<div class="demo-badge">Demo</div>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">Demo</div>
+    <div class="nav-links">
+      <a href="#atelier">Services</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#artists">Artists</a>
+    </div>
+    <a href="#book" class="nav-cta">Book an Appointment</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow"><span class="rule"></span>Hair &amp; Nail Atelier</div>
+      <h1>Two crafts,<br>one <em>standard.</em></h1>
+      <p>A private atelier where colour and cut share a floor with hand-painted nail art — every appointment paced for precision, not volume.</p>
+      <a href="#book" class="btn btn-primary">Book an Appointment</a>
+      <a href="#atelier" class="btn btn-outline">View Services</a>
+    </div>
+    <div class="lacquer-flight">
+      <div class="bottle b1"></div>
+      <div class="bottle b2"></div>
+      <div class="bottle b3"></div>
+      <div class="bottle b4"></div>
+    </div>
+  </div>
+</section>
+
+<section id="atelier">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow"><span class="rule"></span>The Atelier</div>
+        <h2>Hair, and hands.</h2>
+      </div>
+      <p>Every service opens with a private consult before a single tool is picked up.</p>
+    </div>
+    <div class="atelier-grid">
+      <div class="atelier-panel">
+        <div class="roman">I. Hair</div>
+        <h3>Colour &amp; Cut</h3>
+        <p>Precision cutting and hand-painted colour, finished with a gloss no chair leaves without.</p>
+        <ul class="services">
+          <li><span class="chip" style="background:linear-gradient(160deg,#c24a68,#7a1030);"></span><span class="name">Precision Cut</span><span class="price">R550</span></li>
+          <li><span class="chip" style="background:linear-gradient(160deg,#a3355a,#5c0e28);"></span><span class="name">Full Colour</span><span class="price">R1,150</span></li>
+          <li><span class="chip" style="background:linear-gradient(160deg,#8c2a45,#3a0d1c);"></span><span class="name">Balayage</span><span class="price">R1,950</span></li>
+          <li><span class="chip" style="background:linear-gradient(160deg,#4a1120,#100c10);"></span><span class="name">Colour Correction</span><span class="price">From R2,600</span></li>
+        </ul>
+      </div>
+      <div class="atelier-panel">
+        <div class="roman">II. Nails</div>
+        <h3>Manicure &amp; Art</h3>
+        <p>Gel and builder work shaped to the hand, plus fine hand-painted art for those who want it.</p>
+        <ul class="services">
+          <li><span class="chip" style="background:linear-gradient(160deg,#c24a68,#7a1030);"></span><span class="name">Signature Gel</span><span class="price">R380</span></li>
+          <li><span class="chip" style="background:linear-gradient(160deg,#a3355a,#5c0e28);"></span><span class="name">Builder Extensions</span><span class="price">R650</span></li>
+          <li><span class="chip" style="background:linear-gradient(160deg,#8c2a45,#3a0d1c);"></span><span class="name">Hand-Painted Art</span><span class="price">R520</span></li>
+          <li><span class="chip" style="background:linear-gradient(160deg,#4a1120,#100c10);"></span><span class="name">Mani + Pedi</span><span class="price">R820</span></li>
         </ul>
       </div>
     </div>
-  </nav>
+  </div>
+</section>
 
-  <!-- Home / Hero -->
-  <section id="home" class="hero">
-    <div class="container text-center">
-      <div class="glass mx-auto" style="max-width: 650px;">
-        <h1 class="display-5 fw-bold brand-font">Glow Up Starts Here ✨</h1>
-        <p class="lead mt-3">Premium hair & nail services with a luxury vibe. Book your moment of glow.</p>
-        <a href="#pricing" class="btn btn-light btn-lg mt-2">View Services</a>
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow"><span class="rule"></span>Recent Work</div>
+        <h2>From the floor this month.</h2>
       </div>
+      <p>A sample of colour, cut, and nail work from the atelier.</p>
     </div>
-  </section>
+    <div class="gallery-grid">
+      <div class="gallery-card" style="background:linear-gradient(160deg,#4a1120,#100c10);"><span class="tag">Balayage</span></div>
+      <div class="gallery-card" style="background:linear-gradient(160deg,#7a1030,#c24a6822);"><span class="tag">Builder Set</span></div>
+      <div class="gallery-card" style="background:linear-gradient(160deg,#100c10,#4a1120);"><span class="tag">Colour Correction</span></div>
+      <div class="gallery-card" style="background:linear-gradient(160deg,#7a1030,#3a0d1c);"><span class="tag">Hand-Painted Art</span></div>
+    </div>
+  </div>
+</section>
 
-  <!-- About -->
-  <section id="about" class="section-padding bg-soft">
-    <div class="container">
-      <div class="row align-items-center g-5">
-        <div class="col-lg-6">
-          <h2 class="brand-font mb-3">About LuxeGlow</h2>
-          <p class="text-muted">LuxeGlow is a modern beauty salon blending creativity, precision, and luxury. Our team
-            specializes in hair transformations and flawless nail artistry designed to match your personality and
-            lifestyle.</p>
-          <p class="text-muted">We believe beauty is confidence. Every appointment is crafted to feel exclusive,
-            relaxing, and unforgettable.</p>
-        </div>
-        <div class="col-lg-6">
-          <div class="row g-3">
-            <div class="col-6 service-card">
-              <img class="w-100"
-                src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=800&q=80"
-                alt="Hair salon">
-            </div>
-            <div class="col-6 service-card">
-              <img class="w-100"
-                src="https://images.unsplash.com/photo-1519415943484-9fa1873496d4?auto=format&fit=crop&w=800&q=80"
-                alt="Nails">
-            </div>
-          </div>
-        </div>
+<section id="artists">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow"><span class="rule"></span>The Artists</div>
+        <h2>Who's at the table.</h2>
       </div>
+      <p>Each artist works one client at a time, start to finish.</p>
     </div>
-  </section>
-
-  <!-- Pricing -->
-  <section id="pricing" class="section-padding">
-    <div class="container">
-      <div class="text-center mb-5">
-        <h2 class="brand-font">Our Services</h2>
-        <p class="text-muted">Luxury treatments at transparent prices.</p>
-      </div>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card price-card h-100 p-3">
-            <div class="card-body text-center">
-              <h5 class="card-title brand-font">Hair Styling</h5>
-              <p class="text-muted">Wash, cut, blow-dry, styling</p>
-              <h3 class="fw-bold">R350+</h3>
-              <a href="#contact" class="btn btn-dark mt-3">Book Now</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card price-card h-100 p-3">
-            <div class="card-body text-center">
-              <h5 class="card-title brand-font">Nail Art</h5>
-              <p class="text-muted">Gel, acrylic, custom designs</p>
-              <h3 class="fw-bold">R250+</h3>
-              <a href="#contact" class="btn btn-dark mt-3">Book Now</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card price-card h-100 p-3">
-            <div class="card-body text-center">
-              <h5 class="card-title brand-font">Full Glam</h5>
-              <p class="text-muted">Hair + nails combo</p>
-              <h3 class="fw-bold">R550+</h3>
-              <a href="#contact" class="btn btn-dark mt-3">Book Now</a>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="artists-grid">
+      <div class="artist"><div class="artist-photo">N</div><h4>Naledi K.</h4><div class="role">Colour Director</div><p>Balayage and colour correction, eleven years behind the chair.</p></div>
+      <div class="artist"><div class="artist-photo">R</div><h4>Rosa D.</h4><div class="role">Precision Cutting</div><p>Structured cuts that grow out cleanly between visits.</p></div>
+      <div class="artist"><div class="artist-photo">M</div><h4>Mia T.</h4><div class="role">Nail Artist</div><p>Hand-painted fine art and sculpted builder gel work.</p></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Contact -->
-  <section id="contact" class="section-padding bg-soft">
-    <div class="container">
-      <div class="row g-5">
-        <div class="col-lg-6">
-          <h2 class="brand-font mb-3">Get in Touch</h2>
-          <p class="text-muted">Book an appointment or ask anything. We’ll reply fast 💌</p>
-          <ul class="list-unstyled text-muted">
-            <li><strong>📍 Location:</strong> KwaZulu Natal, South Africa</li>
-            <li><strong>📞 Phone:</strong> +27 00 000 0000</li>
-            <li><strong>💌 Email:</strong> hello@luxeglow.co.za</li>
-          </ul>
-        </div>
-        <div class="col-lg-6">
-          <form class="bg-white p-4 rounded-4 shadow-sm">
-            <div class="mb-3">
-              <label class="form-label">Name</label>
-              <input type="text" class="form-control" placeholder="Your name">
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Email</label>
-              <input type="email" class="form-control" placeholder="you@example.com">
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Message</label>
-              <textarea class="form-control" rows="4" placeholder="Tell us what you want to book..."></textarea>
-            </div>
-            <button type="submit" class="btn btn-dark w-100">Send Message</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
+<section class="cta-band" id="book">
+  <div class="content">
+    <h2>Appointments are<br>booked <em>in advance.</em></h2>
+    <p>Consults are complimentary. Peak weekend slots book two to three weeks out.</p>
+    <a href="#" class="btn btn-primary">Book an Appointment</a>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer class="py-4">
-    <div class="container text-center">
-      <p class="mb-1">© 2026 LuxeGlow Salon. All rights reserved.</p>
-    </div>
-  </footer>
+<footer>
+  <div class="logo">Demo</div>
+  <p>Open Tue–Sat, 09:00–18:00 — this is a demo site, not a live business.</p>
+</footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  const els = document.querySelectorAll('.atelier-panel, .gallery-card, .artist, .section-head');
+  els.forEach(el => el.classList.add('fade-up'));
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.15});
+  els.forEach(el => io.observe(el));
+</script>
+
 </body>
-
 </html>
