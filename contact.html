@@ -89,7 +89,7 @@
               <div class="extras-picker">
 
                 <label class="extras-option">
-                  <input type="checkbox" name="extras" value="Simple booking form (R200–R700)" data-min="200">
+                  <input type="checkbox" name="extras" value="Simple booking form (R200–R700)">
                   <span class="extras-check"></span>
                   <span class="extras-text">
                     <span class="extras-title">Booking form</span>
@@ -99,8 +99,7 @@
                 </label>
 
                 <label class="extras-option">
-                  <input type="checkbox" name="extras" value="Full calendar booking system (from R800)"
-                    data-min="800">
+                  <input type="checkbox" name="extras" value="Full calendar booking system (from R800)">
                   <span class="extras-check"></span>
                   <span class="extras-text">
                     <span class="extras-title">Calendar-sync booking system</span>
@@ -110,7 +109,7 @@
                 </label>
 
                 <label class="extras-option">
-                  <input type="checkbox" name="extras" value="E-commerce (from R600)" data-min="600">
+                  <input type="checkbox" name="extras" value="E-commerce (from R600)">
                   <span class="extras-check"></span>
                   <span class="extras-text">
                     <span class="extras-title">E-commerce</span>
@@ -120,7 +119,7 @@
                 </label>
 
                 <label class="extras-option">
-                  <input type="checkbox" name="extras" value="Extra page (R200–R400)" data-min="200">
+                  <input type="checkbox" name="extras" value="Extra page (R200–R400)">
                   <span class="extras-check"></span>
                   <span class="extras-text">
                     <span class="extras-title">Extra page</span>
@@ -130,7 +129,7 @@
                 </label>
 
                 <label class="extras-option">
-                  <input type="checkbox" name="extras" value="Blog setup (R300)" data-min="300">
+                  <input type="checkbox" name="extras" value="Blog setup (R300)">
                   <span class="extras-check"></span>
                   <span class="extras-text">
                     <span class="extras-title">Blog setup</span>
@@ -140,7 +139,7 @@
                 </label>
 
                 <label class="extras-option">
-                  <input type="checkbox" name="extras" value="Logo design (R100)" data-min="100">
+                  <input type="checkbox" name="extras" value="Logo design (R100)">
                   <span class="extras-check"></span>
                   <span class="extras-text">
                     <span class="extras-title">Logo design</span>
@@ -152,15 +151,8 @@
               </div>
             </div>
 
-            <!-- Live estimate -->
-            <div class="estimate-bar">
-              <span class="estimate-label">Estimated starting price</span>
-              <span class="estimate-value" id="estimateValue">Custom quote</span>
-            </div>
-
             <p class="form-note">
-              This is a rough starting estimate, not a final quote — after submitting, we'll contact you to confirm
-              scope, colours, branding, and the final price.
+              After submitting, we'll contact you to confirm scope, colours, branding, and the final price.
             </p>
 
             <button type="submit" class="btn btn-gold" style="width:100%;">
@@ -218,31 +210,6 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-    (function () {
-      const packagePrices = { Starter: 500, Business: 1200, Premium: 2000 };
-      const form = document.getElementById('quoteForm');
-      const estimateValue = document.getElementById('estimateValue');
-
-      function updateEstimate() {
-        let total = 0;
-        const selectedPkg = form.querySelector('input[name="package"]:checked');
-        if (selectedPkg && packagePrices[selectedPkg.value]) {
-          total += packagePrices[selectedPkg.value];
-        }
-
-        form.querySelectorAll('input[name="extras"]:checked').forEach(function (box) {
-          total += parseInt(box.dataset.min, 10) || 0;
-        });
-
-        estimateValue.textContent = total > 0 ? 'From R' + total.toLocaleString() : 'Custom quote';
-      }
-
-      form.addEventListener('change', updateEstimate);
-      updateEstimate();
-    })();
-  </script>
 
   <script>
     (function () {
