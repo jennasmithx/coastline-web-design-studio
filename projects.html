@@ -4,7 +4,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Coastline Web Design | Projects</title>
+  <meta name="color-scheme" content="dark light" />
+  <meta name="theme-color" content="#111214" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f8f9fb" media="(prefers-color-scheme: light)" />
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="site.js" defer></script>
+  <title>Projects &amp; Portfolio | Coastline Web Design</title>
+  <meta name="description" content="See websites designed and built by Coastline Web Design for salons, gyms, construction firms and other small businesses." />
+  <link rel="canonical" href="https://coastlinewebdesign.co.za/projects.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Coastline Web Design" />
+  <meta property="og:title" content="Projects &amp; Portfolio | Coastline Web Design" />
+  <meta property="og:description" content="See websites designed and built by Coastline Web Design for salons, gyms, construction firms and other small businesses." />
+  <meta property="og:url" content="https://coastlinewebdesign.co.za/projects.html" />
+  <meta property="og:image" content="https://coastlinewebdesign.co.za/images/logo.png" />
+  <meta property="og:locale" content="en_ZA" />
+  <meta name="twitter:card" content="summary" />
   <link rel="icon" type="image/png" href="images/logo.png" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
@@ -45,35 +60,81 @@
       <div class="label">Portfolio</div>
       <h1 class="section-title fade-up">Selected <em>Projects</em></h1>
       <p class="section-title fade-up small-text">
-        These projects are demo frontend builds created to showcase layout, design, and UI skills. They are not fully
-        functional demos, but they represent the visual structure and user experience of real websites. Functionality
-        and full interactive features will be implemented upon live site development.
+        A mix of live client websites and demo builds. Live sites open in a new tab so you can explore them fully.
+        Demo builds showcase layout, design, and UI, and represent the visual structure and user experience of real
+        websites; full functionality is added when a site goes live.
       </p>
       <div class="projects-grid">
-        <a href="naildemo.html" class="project-card fade-up delay-1">
-          <img src="images/naildemo.png" alt="Nail Demo" />
-          <div class="project-overlay">
-            <div class="project-title">Nail Demo </div>
+        <div class="project-item fade-up delay-1">
+          <a href="https://petpawhaven.co.za" target="_blank" rel="noopener" class="project-card" aria-label="PetPaw Haven">
+            <span class="project-badge">Live site</span>
+            <img src="images/petpawhaven.jpg" alt="PetPaw Haven website" />
+          </a>
+          <div class="project-meta">
+            <span class="project-name">PetPaw Haven</span>
+            <a href="https://petpawhaven.co.za" target="_blank" rel="noopener" class="project-link">Visit site ↗</a>
           </div>
-        </a>
-        <a href="salon.html" class="project-card fade-up delay-1">
-          <img src="images/salondemo.png" alt="Salon Demo" />
-          <div class="project-overlay">
-            <div class="project-title">Salon Demo </div>
+        </div>
+        <div class="project-item fade-up delay-1">
+          <a href="https://ponderosapinetrading.co.za" target="_blank" rel="noopener" class="project-card" aria-label="Ponderosa Pine Trading">
+            <span class="project-badge">Live site</span>
+            <img src="images/ponderosa.jpg" alt="Ponderosa Pine Trading website" />
+          </a>
+          <div class="project-meta">
+            <span class="project-name">Ponderosa Pine Trading</span>
+            <a href="https://ponderosapinetrading.co.za" target="_blank" rel="noopener" class="project-link">Visit site ↗</a>
           </div>
-        </a>
-        <a href="construction.html" class="project-card fade-up delay-3">
-          <img src="images/construction.png" alt="Construction Demo" />
-          <div class="project-overlay">
-            <div class="project-title">Construction Demo</div>
+        </div>
+        <div class="project-item fade-up delay-1">
+          <a href="https://mine-central.vercel.app" target="_blank" rel="noopener" class="project-card" aria-label="Mine Central">
+            <span class="project-badge">Live site</span>
+            <img src="images/minecentral.jpg" alt="Mine Central website" />
+          </a>
+          <div class="project-meta">
+            <span class="project-name">Mine Central</span>
+            <a href="https://mine-central.vercel.app" target="_blank" rel="noopener" class="project-link">Visit site ↗</a>
           </div>
-        </a>
-        <a href="gym.html" class="project-card fade-up delay-3">
-          <img src="images/forgegym.png" alt="Gym Demo" />
-          <div class="project-overlay">
-            <div class="project-title">Gym Demo</div>
+        </div>
+        <div class="project-item fade-up delay-1">
+          <a href="naildemo.html" class="project-card" aria-label="Nail Salon">
+            <span class="project-badge project-badge-demo">Demo</span>
+            <img src="images/naildemo.png" alt="Nail salon demo" />
+          </a>
+          <div class="project-meta">
+            <span class="project-name">Nail Salon</span>
+            <a href="naildemo.html" class="project-link">Visit site →</a>
           </div>
-        </a>
+        </div>
+        <div class="project-item fade-up delay-2">
+          <a href="salon.html" class="project-card" aria-label="Hair and Nail Salon">
+            <span class="project-badge project-badge-demo">Demo</span>
+            <img src="images/salondemo.png" alt="Hair and nail salon demo" />
+          </a>
+          <div class="project-meta">
+            <span class="project-name">Hair &amp; Nail Salon</span>
+            <a href="salon.html" class="project-link">Visit site →</a>
+          </div>
+        </div>
+        <div class="project-item fade-up delay-2">
+          <a href="construction.html" class="project-card" aria-label="Construction">
+            <span class="project-badge project-badge-demo">Demo</span>
+            <img src="images/construction.png" alt="Construction company demo" />
+          </a>
+          <div class="project-meta">
+            <span class="project-name">Construction</span>
+            <a href="construction.html" class="project-link">Visit site →</a>
+          </div>
+        </div>
+        <div class="project-item fade-up delay-3">
+          <a href="gym.html" class="project-card" aria-label="Gym">
+            <span class="project-badge project-badge-demo">Demo</span>
+            <img src="images/forgegym.png" alt="Gym demo" />
+          </a>
+          <div class="project-meta">
+            <span class="project-name">Gym</span>
+            <a href="gym.html" class="project-link">Visit site →</a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -103,6 +164,15 @@
               <li><a href="webdev.html">Web Design & Development</a></li>
               <li><a href="ecommerce.html">E-Commerce</a></li>
               <li><a href="seoperformance.html">SEO & Performance</a></li>
+            </ul>
+          </div>
+          <div class="footer-links">
+            <h3>Get in touch</h3>
+            <ul>
+              <li><a href="tel:+27662531866">066 253 1866</a></li>
+              <li><a href="https://wa.me/27662531866" target="_blank" rel="noopener">WhatsApp</a></li>
+              <li><a href="mailto:coastlinewebdesignstudio@gmail.com">Email us</a></li>
+              <li>Shelly Beach, KZN</li>
             </ul>
           </div>
         </div>
