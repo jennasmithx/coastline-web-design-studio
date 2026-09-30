@@ -1,12 +1,14 @@
 // Vercel serverless function: POST /api/contact
 // Sends the enquiry to Coastline (and a "message received" email to the client
-// if they gave an email address) using Resend.
+// if they gave an email address) from the Coastline Gmail account.
 //
 // Environment variables (Vercel → Project → Settings → Environment Variables):
-//   RESEND_API_KEY  required. Without it this returns 503 and the site falls back to Formspree.
-//   CONTACT_TO      optional. Where enquiries go. Default: coastlinewebdesignstudio@gmail.com
-//   CONTACT_FROM    optional. Sender, must be on a domain verified in Resend.
-//                   Default: Coastline Web Design <hello@coastlinewebdesign.co.za>
+//   GMAIL_APP_PASSWORD  required. A Google App Password for the Gmail account below.
+//                       Without it this returns 503 and the site falls back to Formspree.
+//   GMAIL_USER          optional. Default: coastlinewebdesignstudio@gmail.com
+//   CONTACT_TO          optional. Where enquiries go. Default: the Gmail account above
+
+const nodemailer = require('nodemailer');
 
 const SITE = 'https://coastlinewebdesign.co.za';
 const PHONE_DISPLAY = '066 253 1866';
@@ -168,16 +170,19 @@ function clientEmail(d) {
   });
 }
 
-async function sendEmail(payload) {
-  const res = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(payload)
-  });
-  if (!res.ok) throw new Error(`Resend ${res.status}: ${await res.text()}`);
+let transporter;
+function mailer() {
+  if (!transporter) {
+    transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.GMAIL_USER || 'coastlinewebdesignstudio@gmail.com',
+        // App Passwords are shown with spaces; Gmail wants them without
+        pass: process.env.GMAIL_APP_PASSWORD.replace(/\s+/g, '')
+      }
+    });
+  }
+  return transporter;
 }
 
 module.exports = async function handler(req, res) {
@@ -185,7 +190,7 @@ module.exports = async function handler(req, res) {
     res.setHeader('Allow', 'POST');
     return res.status(405).json({ error: 'Method not allowed' });
   }
-  if (!process.env.RESEND_API_KEY) {
+  if (!process.env.GMAIL_APP_PASSWORD) {
     return res.status(503).json({ error: 'Email not configured' });
   }
 
@@ -215,14 +220,15 @@ module.exports = async function handler(req, res) {
   d.firstName = d.name.split(/\s+/)[0];
   d.phoneIntl = toIntl(d.phone);
 
-  const from = process.env.CONTACT_FROM || 'Coastline Web Design <hello@coastlinewebdesign.co.za>';
-  const to = process.env.CONTACT_TO || 'coastlinewebdesignstudio@gmail.com';
+  const gmail = process.env.GMAIL_USER || 'coastlinewebdesignstudio@gmail.com';
+  const from = { name: 'Coastline Web Design', address: gmail };
+  const to = process.env.CONTACT_TO || gmail;
 
   try {
-    await sendEmail({
+    await mailer().sendMail({
       from,
-      to: [to],
-      reply_to: d.email || undefined,
+      to,
+      replyTo: d.email || undefined,
       subject: `New enquiry: ${d.name}${d.package ? ` (${d.package})` : ''}`,
       html: ownerEmail(d)
     });
@@ -236,10 +242,10 @@ module.exports = async function handler(req, res) {
   // The enquiry reached us; a failed confirmation email shouldn't show the visitor an error
   if (d.email) {
     try {
-      await sendEmail({
+      await mailer().sendMail({
         from,
-        to: [d.email],
-        reply_to: to,
+        to: d.email,
+        replyTo: to,
         subject: "We've received your message | Coastline Web Design",
         html: clientEmail(d)
       });

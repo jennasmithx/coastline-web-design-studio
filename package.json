@@ -1,0 +1,8 @@
+{
+  "name": "coastline-web-design-studio",
+  "private": true,
+  "description": "Coastline Web Design website. Static pages plus the /api/contact email function.",
+  "dependencies": {
+    "nodemailer": "^10.0.13"
+  }
+}
