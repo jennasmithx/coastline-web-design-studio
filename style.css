@@ -1720,10 +1720,10 @@ small {
   :root {
     color-scheme: light;
     --bg: #ffffff;
-    --page-bg: #f6f6f3;
+    --page-bg: #f8f9fb;
     --surface: #ffffff;
-    --surface2: #f0f1f3;
-    --border: #e1e3e7;
+    --surface2: #eef1f5;
+    --border: #e2e6eb;
     --muted: #6b6e78;
     --body: #4a4d57;
     --heading: #16171b;
@@ -1740,7 +1740,7 @@ small {
     --num: #a3a5ad;
     --small: #6b6e78;
     --spot: rgba(23, 117, 131, .08);
-    --grid-line: rgba(23, 117, 131, .05);
+    --grid-line: rgba(23, 117, 131, .035);
   }
 
   .navbar-toggler-icon {
