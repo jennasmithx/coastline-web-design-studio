@@ -202,7 +202,7 @@
         button.textContent = 'Sending...';
 
         try {
-          // Our own mailer (Resend). Falls back to Formspree if it isn't set up.
+          // Our own mailer (Gmail). Falls back to Formspree if it isn't set up.
           let res = await send('/api/contact', data, true).catch(() => null);
           if (res && res.status === 400) {
             const body = await res.json().catch(() => ({}));
