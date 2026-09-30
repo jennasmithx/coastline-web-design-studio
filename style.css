@@ -818,7 +818,7 @@ footer {
 
 .footer-links-row {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 40px;
 }
@@ -849,6 +849,11 @@ footer {
   transition: color .2s;
 }
 
+.footer-links li {
+  font-size: .8rem;
+  color: var(--muted);
+}
+
 .footer-links a:hover {
   color: var(--heading);
 }
@@ -874,7 +879,8 @@ footer {
     font-size: .95rem;
   }
 
-  .footer-links a {
+  .footer-links a,
+  .footer-links li {
     font-size: .72rem;
   }
 }
