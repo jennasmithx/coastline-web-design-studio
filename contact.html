@@ -48,134 +48,50 @@
 
       <div class="order-wrap">
         <div class="order-box fade-up delay-1">
-          <form id="quoteForm" action="https://formspree.io/f/xzdojyjv" method="POST" target="_self"
-            onsubmit="setTimeout(() => window.location='thankyou.html', 100);">
+          <form id="quoteForm" action="https://formspree.io/f/xzdojyjv" method="POST" novalidate>
 
-            <input type="text" name="name" placeholder="Full Name" required>
-            <input type="email" name="email" placeholder="Email Address" required>
-            <input type="text" name="business" placeholder="Business / Brand Name (Optional)">
-            <input type="text" name="inspiration" placeholder="Type of business">
+            <input type="text" name="name" placeholder="Full Name" autocomplete="name" required>
+            <input type="tel" name="phone" placeholder="Phone / WhatsApp number" autocomplete="tel"
+              inputmode="tel" required>
+            <input type="email" name="email" placeholder="Email Address (optional)" autocomplete="email">
+            <input type="text" name="business" placeholder="Business name (optional)">
+            <input type="text" name="business_type" placeholder="Type of business (optional)">
 
-            <textarea class="mt-3" name="message" rows="4" placeholder="Enquire about your desired website..."
+            <label class="field-label" for="package">Know what you want? <span class="field-label-note">(optional)</span></label>
+            <select id="package" name="package">
+              <option value="">Not sure yet</option>
+              <option value="Starter">Starter (1–2 pages)</option>
+              <option value="Business">Business (3–4 pages)</option>
+              <option value="Premium">Premium (5+ pages)</option>
+              <option value="SEO &amp; performance">SEO &amp; performance for an existing site</option>
+            </select>
+
+            <textarea name="message" rows="5"
+              placeholder="Ask us anything, or tell us about your business and what you need (e.g. booking system, online store, logo)..."
               required></textarea>
 
-            <!-- Package selection -->
-            <div class="field-group">
-              <label class="field-label">Choose a package <span class="field-label-note">(optional)</span></label>
-              <div class="package-picker">
+            <!-- Spam trap: hidden from people, bots fill it in -->
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true"
+              style="position:absolute; left:-9999px; width:1px; height:1px; opacity:0;">
 
-                <input type="radio" name="package" id="pkg-starter" value="Starter" class="package-input">
-                <label for="pkg-starter" class="package-option">
-                  <span class="package-name">Starter</span>
-                  <span class="package-price">R400–800</span>
-                  <span class="package-pages">1–2 pages</span>
-                </label>
-
-                <input type="radio" name="package" id="pkg-business" value="Business" class="package-input">
-                <label for="pkg-business" class="package-option is-popular">
-                  <span class="package-badge">Most Popular</span>
-                  <span class="package-name">Business</span>
-                  <span class="package-price">R1000–1,400</span>
-                  <span class="package-pages">3–4 pages</span>
-                </label>
-
-                <input type="radio" name="package" id="pkg-premium" value="Premium" class="package-input">
-                <label for="pkg-premium" class="package-option">
-                  <span class="package-name">Premium</span>
-                  <span class="package-price">From R2000</span>
-                  <span class="package-pages">5+ pages</span>
-                </label>
-
-              </div>
-              <p class="form-note" style="margin-top:8px;">
-                Final price depends on complexity — a very simple 4-page site could land near the bottom of the
-                Business range, for example.
-              </p>
-            </div>
-
-            <!-- Extras -->
-            <div class="field-group">
-              <label class="field-label">Add any extras <span class="field-label-note">(optional)</span></label>
-              <div class="extras-picker">
-
-                <label class="extras-option">
-                  <input type="checkbox" name="extras" value="Simple booking form (R200–R700)">
-                  <span class="extras-check"></span>
-                  <span class="extras-text">
-                    <span class="extras-title">Booking form</span>
-                    <span class="extras-sub">Simple date/time request form</span>
-                  </span>
-                  <span class="extras-cost">R200–700</span>
-                </label>
-
-                <label class="extras-option">
-                  <input type="checkbox" name="extras" value="Full calendar booking system (from R800)">
-                  <span class="extras-check"></span>
-                  <span class="extras-text">
-                    <span class="extras-title">Calendar-sync booking system</span>
-                    <span class="extras-sub">Live availability, no double-bookings</span>
-                  </span>
-                  <span class="extras-cost">From R800</span>
-                </label>
-
-                <label class="extras-option">
-                  <input type="checkbox" name="extras" value="E-commerce (from R600)">
-                  <span class="extras-check"></span>
-                  <span class="extras-text">
-                    <span class="extras-title">E-commerce</span>
-                    <span class="extras-sub">Product listings, checkout & payments</span>
-                  </span>
-                  <span class="extras-cost">From R500</span>
-                </label>
-
-                <label class="extras-option">
-                  <input type="checkbox" name="extras" value="Extra page (R200–R400)">
-                  <span class="extras-check"></span>
-                  <span class="extras-text">
-                    <span class="extras-title">Extra page</span>
-                    <span class="extras-sub">Beyond your package's page count</span>
-                  </span>
-                  <span class="extras-cost">R200–400</span>
-                </label>
-
-                <label class="extras-option">
-                  <input type="checkbox" name="extras" value="Blog setup (R300)">
-                  <span class="extras-check"></span>
-                  <span class="extras-text">
-                    <span class="extras-title">Blog setup</span>
-                    <span class="extras-sub">A place to post news & updates</span>
-                  </span>
-                  <span class="extras-cost">R300</span>
-                </label>
-
-                <label class="extras-option">
-                  <input type="checkbox" name="extras" value="Logo design (R100)">
-                  <span class="extras-check"></span>
-                  <span class="extras-text">
-                    <span class="extras-title">Logo design</span>
-                    <span class="extras-sub">A simple custom logo for your brand</span>
-                  </span>
-                  <span class="extras-cost">R100</span>
-                </label>
-
-              </div>
-            </div>
-
-            <p class="form-note"><br>
-              After submitting, we'll contact you to confirm scope, colours, branding, and the final price.
+            <p class="form-note">
+              See our <a href="pricing.html" style="color:var(--gold);">pricing page</a> for packages and extras.
+              We'll get back to you on WhatsApp or by phone to answer questions and confirm a quote.
             </p>
 
-            <button type="submit" class="btn btn-gold" style="width:100%;">
-              Submit
+            <p id="formError" class="form-note" role="alert" style="display:none; color:#e5484d;"></p>
+
+            <button type="submit" class="btn btn-gold" style="width:100%; justify-content:center;">
+              Send
             </button>
           </form>
         </div>
 
         <div class="order-summary fade-up delay-2">
           <h4>What happens next?</h4>
-          <p>✔ We review your request</p>
+          <p>✔ We read your message</p>
           <p>✔ We contact you within 24 hours</p>
-          <p>✔ We discuss your vision & branding</p>
+          <p>✔ We answer your questions & discuss your vision</p>
           <p>✔ You receive a custom quote</p>
           <p>✔ We start building your site</p>
           <div class="divider"></div>
@@ -236,19 +152,69 @@
 
   <script>
     (function () {
-      // Allow clicking an already-selected package to deselect it
-      const packageInputs = document.querySelectorAll('input[name="package"]');
-      packageInputs.forEach(function (input) {
-        input.addEventListener('click', function () {
-          if (input.dataset.wasChecked === 'true') {
-            input.checked = false;
-            input.dataset.wasChecked = 'false';
-            input.dispatchEvent(new Event('change', { bubbles: true }));
-          } else {
-            packageInputs.forEach(i => i.dataset.wasChecked = 'false');
-            input.dataset.wasChecked = 'true';
-          }
+      const form = document.getElementById('quoteForm');
+      const errorBox = document.getElementById('formError');
+      const button = form.querySelector('button[type="submit"]');
+      const FORMSPREE = form.action;
+
+      function showError(html) {
+        errorBox.innerHTML = html;
+        errorBox.style.display = 'block';
+      }
+
+      // Accepts SA numbers (082 123 4567, +27 82 123 4567) and international (+44 7700 900123)
+      function validPhone(value) {
+        const v = value.trim();
+        if (!/^\+?[\d\s()\-.]+$/.test(v)) return false;
+        const digits = v.replace(/\D/g, '');
+        return digits.length >= 9 && digits.length <= 15;
+      }
+
+      async function send(url, data, asJson) {
+        return fetch(url, {
+          method: 'POST',
+          headers: asJson
+            ? { 'Content-Type': 'application/json', 'Accept': 'application/json' }
+            : { 'Accept': 'application/json' },
+          body: asJson ? JSON.stringify(Object.fromEntries(data)) : data
         });
+      }
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        errorBox.style.display = 'none';
+
+        const data = new FormData(form);
+        if (!data.get('name').trim()) return showError('Please enter your name.');
+        if (!validPhone(data.get('phone'))) {
+          return showError('Please enter a valid phone number, e.g. 082 123 4567 or +44 7700 900123.');
+        }
+        const email = data.get('email').trim();
+        if (email && !form.email.checkValidity()) return showError('That email address doesn\'t look right.');
+        if (!data.get('message').trim()) return showError('Please add a message or question.');
+
+        button.disabled = true;
+        button.textContent = 'Sending...';
+
+        try {
+          // Our own mailer (Resend). Falls back to Formspree if it isn't set up.
+          let res = await send('/api/contact', data, true).catch(() => null);
+          if (res && res.status === 400) {
+            const body = await res.json().catch(() => ({}));
+            throw new Error(body.error || 'Please check your details and try again.');
+          }
+          if (!res || !res.ok) {
+            res = await send(FORMSPREE, data, false);
+            if (!res.ok) throw new Error('');
+          }
+          window.location.href = 'thankyou.html';
+        } catch (err) {
+          showError((err.message ? err.message + ' ' : 'Sorry, your message didn\'t send. ') +
+            'You can also reach us on <a href="https://wa.me/27662531866" style="color:var(--gold);">WhatsApp</a> ' +
+            'or call <a href="tel:+27662531866" style="color:var(--gold);">066 253 1866</a>.');
+          button.disabled = false;
+          button.textContent = 'Send';
+        }
       });
     })();
   </script>
@@ -261,6 +227,7 @@
         if (msg && !msg.value) {
           msg.value = "I'm interested in an SEO & performance audit for my website.";
         }
+        document.getElementById('package').value = 'SEO & performance';
       }
     })();
   </script>

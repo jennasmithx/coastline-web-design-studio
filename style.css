@@ -1150,6 +1150,7 @@ footer {
   margin-bottom: 14px;
   color: var(--heading);
   border-radius: var(--radius);
+  font: inherit;
 }
 
 .order-summary h4 {
