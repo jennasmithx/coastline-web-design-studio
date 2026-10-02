@@ -11,8 +11,8 @@
 const nodemailer = require('nodemailer');
 
 const SITE = 'https://coastlinewebdesign.co.za';
-const PHONE_DISPLAY = '066 253 1866';
-const PHONE_INTL = '27662531866';
+const PHONE_DISPLAY = '071 931 8326';
+const PHONE_INTL = '27719318326';
 
 const C = {
   bg: '#111214',
