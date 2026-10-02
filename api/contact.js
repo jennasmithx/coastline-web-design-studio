@@ -7,6 +7,9 @@
 //                       Without it this returns 503 and the site falls back to Formspree.
 //   GMAIL_USER          optional. Default: coastlinewebdesignstudio@gmail.com
 //   CONTACT_TO          optional. Where enquiries go. Default: the Gmail account above
+//   CONTACT_FROM        optional. Address emails are sent from. Default: info@coastlinewebdesign.co.za
+//                       Must be a verified "Send mail as" address in that Gmail account,
+//                       otherwise Gmail sends from the Gmail address instead.
 
 const nodemailer = require('nodemailer');
 
@@ -221,7 +224,8 @@ module.exports = async function handler(req, res) {
   d.phoneIntl = toIntl(d.phone);
 
   const gmail = process.env.GMAIL_USER || 'coastlinewebdesignstudio@gmail.com';
-  const from = { name: 'Coastline Web Design', address: gmail };
+  const fromAddress = process.env.CONTACT_FROM || 'info@coastlinewebdesign.co.za';
+  const from = { name: 'Coastline Web Design', address: fromAddress };
   const to = process.env.CONTACT_TO || gmail;
 
   try {
@@ -245,7 +249,7 @@ module.exports = async function handler(req, res) {
       await mailer().sendMail({
         from,
         to: d.email,
-        replyTo: to,
+        replyTo: fromAddress,
         subject: "We've received your message | Coastline Web Design",
         html: clientEmail(d)
       });
